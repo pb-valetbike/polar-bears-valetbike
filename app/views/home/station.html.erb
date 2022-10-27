@@ -1,0 +1,40 @@
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+      Hello, Welcome to ValetBike!
+    </div>
+    Stations:
+    <div class="flexbox vertical stretch">
+      <% if @stations.present? %>
+        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+      <% else %>
+      <div class="empty">
+        No stations found.
+      </div>
+      <% end %>
+    </div>
+    <header class="main" id="siteheader">
+      <a href="#menu" class="menu-link active"><span></span> <a href="https://www.jqueryscript.net/menu/">Menu</a></a>
+      <nav id="menu" class="menu">
+        <ul class="level-1">
+          <li><a href="">Item 1</a></li>
+          <li><a href="">Item 2</a><span class="has-subnav">&#x25BC;</span>
+            <ul class="wide level-2">
+              <li><a href="">Child Item 1</a></li>
+              <li><a href="">Child Item 2</a></li>
+              <li><a href="">Child Item 3</a></li>
+            </ul>
+          </li>
+          <li><a href="">Item 3</a><span class="has-subnav">&#x25BC;</span>
+            <ul class="level-2">
+              <li><a href="">Child Item 1</a></li>
+              <li><a href="">Child Item 2</a></li>
+            </ul>
+          </li>
+          <li><a href="">Item 4</a></li>
+          <li><a href="">Item 5</a></li>
+        </ul>
+      </nav>
+    </header>
+	</div>
+</div>
