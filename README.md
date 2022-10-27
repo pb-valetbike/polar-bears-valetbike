@@ -1,10 +1,11 @@
 # ValetBike
-Janice
 Smith College CSC223: Software Engineering\
 Starter App for ValetBike project
 
 Sulagna Saha
 Amanda Colby
+Janice Smith
+Nandini
 
 ## Environment Configuration
 
