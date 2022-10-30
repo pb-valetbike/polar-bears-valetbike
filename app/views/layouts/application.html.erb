@@ -13,39 +13,74 @@
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link href="toggle-nav.css" rel="stylesheet">
     <title>ValetBike</title>
+    <style>
+      header{
+        font-family: Lucida, Verdana, sans-serif;
+        background: linear-gradient(powderblue, white);
+        display:inline;
+      }
+      .header-button {
+        height: 45px; 
+        width: 90px; 
+        background-color: powderblue;
+        background-size: 100% 100%;
+        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+        background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
+        border: 2px solid;
+        border-color: darkblue;
+        border-radius: 8px;
+        margin: 3px;
+        float: right;
+        color: darkblue;
+      }
+      footer {
+        background: linear-gradient(to top, powderblue, white);
+        height: 85px;
+        display: inline;
+      }
+      .footer-text {
+        font-size: 30px;
+        color: darkblue;
+        font-family: Gabriola, Lucida, Verdana, sans-serif;
+        padding: 20px;
+        font-weight: bold;
+      }
+    </style>
     <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
     <script src="toggle-nav.js"></script>
   </head>
   <body>
     <div id="site-container" class="flexbox vertical stretch flex-1">
-        <a href='/home/main'> ValetBike </a>
-        <button type="button" name="login" onclick="#" style = 'height: 50px; width:75px; background-color: green'>Login</button>
-        <button type="button" name="signup" onclick="#" style = 'height: 50px; width:75px; background-color: green'>SignUp</button>
-        <%= image_tag("account.png", :size => "30x30")%>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/home/main">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/home/about">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/home/station">Station Map</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/home/pricing">Pricing</a>
-              </li>
-            </ul>
-          </div>
+      <header>
+        <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
+        <button class="header-button" type="button" name="login" onclick="#">Login</button>
+        <button class="header-button" type="button" name="signup" onclick="#">Sign Up</button>
+        <%= image_tag("account.png", :size => "50x50")%>
+      </header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home/main">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/home/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/home/station">Station Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/home/pricing">Pricing</a>
+            </li>
+          </ul>
+        </div>
       </nav>
       <div class="flexbox vertical center">
         <%= yield %>
       </div>
       <footer>
-        <p> Contact us @ ... </p>
-        <p> Share experience </p>
+        <p class=footer-text style='float: left'>Contact us at ...</p>
+        <p class=footer-text style='float: right'>Share your experience</p>
       </footer>
     </div>
   </body>
