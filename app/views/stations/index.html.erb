@@ -1,16 +1,35 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
-      Welcome to ValetBike!
-    </div>  
-    <div class="flexbox vertical stretch">
-      <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
-      <div class="empty">
-        No stations found.
-      </div>
-      <% end %>
+      Station Map
     </div>
+    <header class="main" id="siteheader">
+      <a href="#menu" class="menu-link active"><span></span> <a href="#""">Stations</a></a>
+      <nav id="menu" class="menu">
+        <ul class="level-1">
+          <% if @stations.present? & @bikes.present? %>
+            <% @stations.each_with_index do |item,index| %>
+              <li><a href=""> <%= item[:identifier] %> : <%= item[:name] %> (<%= item[:address] %>) </a><span class="has-subnav">&#x25BC;</span>
+              <ul class="level-2">
+              <% @bikes.each_with_index do |bike, b_index| %>
+                <% if bike[:current_station_id] == item[:identifier] %>
+                  <li><%= bike[:identifier] %></li>
+                <% else %>
+                <% end %>
+              <% end  %>
+              </ul>
+            <% end %>
+          <% else %>
+          <div class="empty">
+            No stations found.
+          </div>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
 	</div>
+
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
 </div>
