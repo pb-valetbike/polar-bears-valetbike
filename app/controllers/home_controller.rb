@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   end
 
   def about
+    @text = params['text']
   end
 
   def pricing 
