@@ -20,8 +20,8 @@
         display:inline;
       }
       .header-button {
-        height: 45px; 
-        width: 90px; 
+        height: 45px;
+        width: 90px;
         background-color: powderblue;
         background-size: 100% 100%;
         background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
@@ -50,13 +50,11 @@
     <script src="toggle-nav.js"></script>
   </head>
   <body>
-     
-
     <div id="site-container" class="flexbox vertical stretch flex-1">
       <header>
         <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
-        <button class="header-button" type="button" name="signin" onclick="/sign_in">Sign in</button>
-        <button class="header-button" type="button" name="signup" onclick="/sign_up">Sign Up</button>
+        <button class="header-button" type="button" name="login" onclick="#"><a href="/sign_in">Sign in</a></button>
+        <button class="header-button" type="button" name="signup" onclick="#"><a href="/sign_up">Sign Up</a></button>
         <%= image_tag("account.png", :size => "50x50")%>
       </header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -78,8 +76,6 @@
         </div>
       </nav>
       <div class="flexbox vertical center">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
         <%= yield %>
       </div>
       <footer>
