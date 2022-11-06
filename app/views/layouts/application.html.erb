@@ -50,11 +50,13 @@
     <script src="toggle-nav.js"></script>
   </head>
   <body>
+     
+
     <div id="site-container" class="flexbox vertical stretch flex-1">
       <header>
         <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
-        <button class="header-button" type="button" name="login" onclick="#">Login</button>
-        <button class="header-button" type="button" name="signup" onclick="#">Sign Up</button>
+        <button class="header-button" type="button" name="signin" onclick="/sign_in">Sign in</button>
+        <button class="header-button" type="button" name="signup" onclick="/sign_up">Sign Up</button>
         <%= image_tag("account.png", :size => "50x50")%>
       </header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -76,6 +78,8 @@
         </div>
       </nav>
       <div class="flexbox vertical center">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
         <%= yield %>
       </div>
       <footer>
