@@ -1,1 +1,60 @@
 <h1> About </h1>
+<% texts = Hash.new([
+    "Using ValetBike is very simple!", 
+    "To start, just click over to the 'Stations' tab, or click the 'Find a Bike Now' button. This will bring you to our map page.",
+    "From there you can find nearby stations and unlock bikes within them."
+]) %>
+<% texts = {
+    "instructions" => [
+        "Using ValetBike is very simple!", 
+        "To start, just click over to the 'Stations' tab, or click the 'Find a Bike Now' button. This will bring you to our map page.",
+        "From there you can find nearby stations and unlock bikes within them."
+    ],
+    "whatisvaletbike" => [
+        "Valetbike is a bike share program designed to make local transportation within Nipmuc Notch simple and affordable."
+    ],
+    "whoarewe" => [
+        "We are a small dev team based in Northampton.",
+        "We dream of seeing our customers use the bike share to better the environment and spend less money on the upkeep of a car."
+    ],
+    "faq" => [
+        "How do I unlock a bike?",
+        "Just go to our map page and click 'unlock'. If you haven't saved your card information with us, you will be prompted to do so.",
+        "\n",
+        "Do I have to buy a membership?",
+        "No! You can unlock bikes as much as you please as long as you have an account and input your card information."
+    ]
+} %>
+
+<nav>
+    <ul style='display:inline-block; float:left;'>
+        <li>
+            <%= link_to("Instructions", {action: 'about', text: "instructions"}) %>
+        </li>
+        <li>
+            <%= link_to("What is ValetBike?", {action: 'about', text: "whatisvaletbike"}) %>
+        </li>
+        <li>
+            <%= link_to("Who Are We?", {action: 'about', text: "whoarewe"}) %>
+        </li>
+        <li> 
+            <%= link_to("FAQ", {action: 'about', text: "faq"}) %>
+        </li>
+    </ul>
+</nav>
+<div style="display:inline-block;">
+<% if @text %>
+    <% texts[@text].each do |line|%>
+        <p> <%= line %> </p>
+    <% end %>
+<% else %>
+    <% texts["instructions"].each do |line|%>
+        <p> <%= line %> </p>
+    <% end %>
+<% end %>
+</div>
+
+<%= image_tag("bike_forest_bridge.jpg", :size => "300x180", alt: "Biker going toward a wooden bridge in the woods.")%>
+<%= image_tag("person_red_bike.jpg", :size => "300x180", alt: "Person standing in a city with a red bike.")%>
+<%= image_tag("city_bike_path.jpg", :size => "300x180", alt: "Mother and daughter on an urban bike path.")%>
+
