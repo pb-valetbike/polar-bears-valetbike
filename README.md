@@ -1,4 +1,5 @@
 # ValetBike
+
 Smith College CSC223: Software Engineering\
 Starter App for ValetBike project
 
@@ -6,6 +7,7 @@ Sulagna Saha
 Amanda Colby
 Janice Smith
 Nandini
+Liam Knight
 
 ## Environment Configuration
 
@@ -14,6 +16,7 @@ As you configure your environment you should **keep a log** where you **write do
 Installing Ruby on Rails is not a trivial process. It is the essential first step to developing ValetBike, and it will take you far longer than all the other steps to complete. Be sure to set aside ample time to work through the setup.
 
 ### 0. Remember that versions matter
+
 ValetBike runs on Ruby 3.1.2 and Rails 7.0.3.1. It is essential that you configure your environment to use these precise versions of the language and framework.
 
 ### 1. Install Ruby on Rails with MySQL
@@ -65,43 +68,48 @@ MYSQL_SOCKET=/var/run/mysqld/mysqld.sock  # For Windows
 
 ### 6. Confirm that the app runs
 
-* Launch the web server using `rackup` or `rails s` (short for `rails server`) or `bin/dev`
-* If using `rackup` open http://localhost:9292 (or http://127.0.0.1:9292) in a browser
-* If using `rails s` or `bin/dev` open http://localhost:3000 (or http://127.0.0.1:3000) in a browser
-* You should see ValetBike welcome page
-
+- Launch the web server using `rackup` or `rails s` (short for `rails server`) or `bin/dev`
+- If using `rackup` open http://localhost:9292 (or http://127.0.0.1:9292) in a browser
+- If using `rails s` or `bin/dev` open http://localhost:3000 (or http://127.0.0.1:3000) in a browser
+- You should see ValetBike welcome page
 
 ## Assignment #1: Hello Stack, Welcome to ValetBike!
 
 ### Brief Background
-You and several other junior engineers have just started at ValetBike, a community tech co-op based in Nipmuc Notch, and you are excited to finally be getting paid to contribute to a meaningful app. During your hiring interview, you said you were comfortable doing full stack programming, but stressed you hadn't worked in Ruby on Rails before. The lead developer thought you were right for the position and promised you a guided tour of the codebase on your first day. However, after your onboarding, you learn they've just gone on leave indefinitely. It also turns out the lead developer was the *only* developer at ValetBike, and now the rest of the team is counting on you and the other new programmers to complete the prototype before the scheduled launch day.
+
+You and several other junior engineers have just started at ValetBike, a community tech co-op based in Nipmuc Notch, and you are excited to finally be getting paid to contribute to a meaningful app. During your hiring interview, you said you were comfortable doing full stack programming, but stressed you hadn't worked in Ruby on Rails before. The lead developer thought you were right for the position and promised you a guided tour of the codebase on your first day. However, after your onboarding, you learn they've just gone on leave indefinitely. It also turns out the lead developer was the _only_ developer at ValetBike, and now the rest of the team is counting on you and the other new programmers to complete the prototype before the scheduled launch day.
 
 As a fearless software engineer you agree to onboard yourself and attempt to continue the build. You didn't get much information about the architecture or design of the product during your interview. All you remember is that the lead developer had been working with the [ValleyBike](https://valleybike.org) team to iterate on their system which launched in 2018 and that they were using GitHub to collaborate on their codebase.
 
 ### Assignment Goal
+
 Your primary objective is to get your development environment configured so that the existing app will run on your machine. To exceed expectations, you must add at least one feature to the current code. To distinguish yourself, you should add two or more features. See submission guidelines below for complete details.
 
 ### How to Begin
-* Create a GitHub account if you don't have one
-* Go to [https://github.com/deadroxy/valetbike](https://github.com/deadroxy/valetbike)
-* Follow the README instructions to configure your environment
+
+- Create a GitHub account if you don't have one
+- Go to [https://github.com/deadroxy/valetbike](https://github.com/deadroxy/valetbike)
+- Follow the README instructions to configure your environment
 
 ### Teamwork Guidelines
+
 You may work in teams of up to five people to get your environments set up and to modify the code. But you must each submit your own unique environment screenshots via Moodle. If you choose to fork the repo to add features, you can collaborate on the code, but you must each create and submit a record of a unique pull request.
 
 ### Ruby on Rails Guides
+
 You will probably be unfamiliar with the main components of the ValetBike stack like the language (Ruby), the framework (Rails), and the database (MySQL). Luckily the lead developer left links to their favorite books and tutorials for you below. Consult them regularly as you get your bearings in the new environment.
 
-* [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
-* [I Love Ruby](https://i-love-ruby.gitlab.io/)
-* [The Bastards Book of Ruby](http://ruby.bastardsbook.com/)
-* [Why's (Poignant) Guide to Ruby](https://poignant.guide/)
+- [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
+- [I Love Ruby](https://i-love-ruby.gitlab.io/)
+- [The Bastards Book of Ruby](http://ruby.bastardsbook.com/)
+- [Why's (Poignant) Guide to Ruby](https://poignant.guide/)
 
 ### Exploration Tips
-* Review the files the lead developer left in the `notes/` folder
-* Pay special attention to the environment setup and [app creation](https://github.com/deadroxy/valetbike/blob/master/notes/app-creation.md) guides
-* Use GitHub to dive into previous commits to see what they built so far
-* Use `rails console` to experiment with creating station & bike records from the command line
+
+- Review the files the lead developer left in the `notes/` folder
+- Pay special attention to the environment setup and [app creation](https://github.com/deadroxy/valetbike/blob/master/notes/app-creation.md) guides
+- Use GitHub to dive into previous commits to see what they built so far
+- Use `rails console` to experiment with creating station & bike records from the command line
   - `s = Station.new(name: "Neu Station", address: "123 Novel Lane", identifier: "45")`
   - `s.save`
   - `b = Bike.new(identifier: "1234")`
@@ -111,15 +119,17 @@ You will probably be unfamiliar with the main components of the ValetBike stack 
   - `s.docked_bikes.count`
 
 ### Submission Guidelines to Meet Expectations
+
 1. Get ValetBike running on your development machine
 2. Modify the welcome message
 3. Take a screenshot showing your change works (include browser, console, date/time)
-4. Name the screenshot "youremail-a1-ss.png" or *.jpg (for me it would be "jbrewer-a1-ss.png")
+4. Name the screenshot "youremail-a1-ss.png" or \*.jpg (for me it would be "jbrewer-a1-ss.png")
 5. Create a text file called "youremail-a1-team.txt" (for me it would be "jbrewer-a1-team.txt")
 6. List the names of everyone you worked with on this assignment, including your own (for me it would be "Johanna Brewer")
 7. Submit your screenshot and team list via Moodle
 
 ### Submission Guidelines to Exceed Expectations or Distinguish yourself
+
 1. Complete all of the Meets Expectations tasks
 2. Implement one (Exceeds) or more (Distinguished) of the features below
    - Show number of docked bikes at each station
@@ -134,6 +144,7 @@ You will probably be unfamiliar with the main components of the ValetBike stack 
 7. Submit your pull request file along with your screenshot and team list via Moodle
 
 ## License
+
 Copyright 2021-2022, Johanna Brewer
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
