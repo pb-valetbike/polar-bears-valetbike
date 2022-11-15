@@ -44,8 +44,18 @@
 </nav>
 <div style="display:inline-block;">
 <% if @text %>
-    <% texts[@text].each do |line|%>
-        <p> <%= line %> </p>
+    <% if @text == "faq" %>
+        <% texts[@text].each do |line| %>
+            <% if line[-1] == "?" %>
+                <p class="font-bold"> <%= line %> </p>
+            <% else %>
+                <p> <%= line %> </p>
+            <% end %>
+        <% end %>
+    <% else %>
+        <% texts[@text].each do |line|%>
+            <p> <%= line %> </p>
+        <% end %>
     <% end %>
 <% else %>
     <% texts["instructions"].each do |line|%>
