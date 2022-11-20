@@ -12,58 +12,62 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link href="toggle-nav.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+      crossorigin=""></script>
+
     <title>ValetBike</title>
+    <style>
+      header{
+        font-family: Lucida, Verdana, sans-serif;
+        background: linear-gradient(powderblue, white);
+        display:inline;
+      }
+      .header-button {
+        height: 45px;
+        width: 90px;
+        background-color: powderblue;
+        background-size: 100% 100%;
+        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+        background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
+        border: 2px solid;
+        border-color: darkblue;
+        border-radius: 8px;
+        margin: 3px;
+        float: right;
+        color: darkblue;
+      }
+      footer {
+        background: linear-gradient(to top, powderblue, white);
+        height: 85px;
+        display: inline;
+      }
+      .footer-text {
+        font-size: 30px;
+        color: darkblue;
+        font-family: Gabriola, Lucida, Verdana, sans-serif;
+        padding: 20px;
+        font-weight: bold;
+      }
+    </style>
     <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
     <script src="toggle-nav.js"></script>
   </head>
-  <style>
-    header{
-      font-family: Lucida, Verdana, sans-serif;
-      background: linear-gradient(powderblue, white);
-      display:inline;
-    }
-    .header-button {
-      height: 45px;
-      width: 90px;
-      background-color: powderblue;
-      background-size: 100% 100%;
-      background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-      background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
-      border: 2px solid;
-      border-color: darkblue;
-      border-radius: 8px;
-      margin: 3px;
-      float: right;
-      color: darkblue;
-      font-family: Calisto;
-      font-size: 18px;
-    }
-    footer {
-      background: linear-gradient(to top, powderblue, white);
-      height: 85px;
-      display: inline;
-    }
-    .footer-text {
-      font-size: 30px;
-      color: darkblue;
-      font-family: Gabriola, Lucida, Verdana, sans-serif;
-      padding: 20px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-family: Verdana, sans-serif;
-      font-weight: bold;
-      font-size: 40px;
-      text-align: center;
-    }
-  </style>
   <body>
     <div id="site-container" class="flexbox vertical stretch flex-1">
       <header>
         <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
-        <a href="/sign_in"><button class="header-button" type="button" name="login" onclick="#">Sign In</button></a>
-        <a href="/sign_up"><button class="header-button" type="button" name="signup" onclick="#">Sign Up</button></a>
+        <% if Current.user %>
+          <%= link_to 'Profile', profile_path %>
+          <%= button_to 'Logout', logout_path, method: :delete %>
+          <% else %>
+          <button class="header-button" type="button" name="login" onclick="#"><a href="/sign_in">Sign in</a></button>
+          <button class="header-button" type="button" name="signup" onclick="#"><a href="/sign_up">Sign Up</a></button>
+          <%end%>
         <%= image_tag("account.png", :size => "50x50")%>
       </header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">

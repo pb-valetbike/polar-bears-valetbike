@@ -1,0 +1,13 @@
+<%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %>
+
+<p> You are currently viewing </p>
+<p> <%= @station.name %> </p>
+<div>
+  <p> Please click the bike you want to unlock </p>
+  <% @bikes.each do |bike| %>
+    <% if bike[:current_station_id] == @station.identifier %>
+      <li><%= link_to(bike[:identifier] , edit_bike_path(bike), class: 'action show') %>
+    <% else %>
+    <% end %>
+  <% end  %>
+</div>

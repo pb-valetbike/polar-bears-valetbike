@@ -1,5 +1,8 @@
 class RegistrationsController < ApplicationController
     # instantiates new user
+    def profile
+      render "profile/user_profile"
+    end
     def new
       @user = User.new
     end
