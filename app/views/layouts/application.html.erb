@@ -12,6 +12,14 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
     <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link href="toggle-nav.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+      crossorigin=""></script>
+
     <title>ValetBike</title>
     <style>
       header{
@@ -55,6 +63,8 @@
         <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
         <button class="header-button" type="button" name="login" onclick="#"><a href="/sign_in">Sign in</a></button>
         <button class="header-button" type="button" name="signup" onclick="#"><a href="/sign_up">Sign Up</a></button>
+        <% if Current.user %>       <%= link_to 'Profile', profile_path %>       <%= button_to 'Logout', logout_path, method: :delete %>              <% else %>       <%= link_to 'Sign Up', sign_up_path %>       <%= link_to 'Sign in', sign_in_path %>       <%end%>
+
         <%= image_tag("account.png", :size => "50x50")%>
       </header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">

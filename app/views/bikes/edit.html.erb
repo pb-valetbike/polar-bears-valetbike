@@ -1,0 +1,40 @@
+<div>
+  <h1 class="font-bold text-4xl">Bikes#edit</h1>
+  <p>You are currently renting this bike: <%= @bike.identifier %></p>
+
+  <div>
+    <p> Select a station to return a bike: </p>
+    <script type="text/javascript">
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+
+  <div class="dropdown">
+  <%= form_tag(edit_bike_path, method:'PATCH') do %>
+  <select name="stationId" id="stationId" class="text-center">
+    <% @stations.each do |s| %>
+        <option value=<%= s.identifier %>><%= s.name %></option>
+    <% end %>
+  </select>
+  </div>
+  <br><br><br>
+  <%= submit_tag 'Return Now', :class => "button2" %>
+  <% end %>
+  </div>
+
+</div>

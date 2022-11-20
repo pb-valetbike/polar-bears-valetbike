@@ -1,0 +1,5 @@
+<% if Current.user %>
+Logged in as: <%= Current.user.email %><br>
+<%= link_to 'Edit Password', edit_password_path %>
+
+<%end%>

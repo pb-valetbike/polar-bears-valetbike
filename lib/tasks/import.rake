@@ -7,6 +7,8 @@ require 'csv'
       s.identifier = row["identifier"]
       s.name = row["name"]
       s.address = row["address"]
+      s.xcoord = row["xcoord"]
+      s.ycoord = row["ycoord"]
       s.save
     end
   end

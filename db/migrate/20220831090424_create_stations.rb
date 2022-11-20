@@ -4,6 +4,8 @@ class CreateStations < ActiveRecord::Migration[7.0]
       t.integer :identifier
       t.string :name
       t.string :address
+      t.string :xcoord
+      t.string :ycoord
 
       t.timestamps
     end
