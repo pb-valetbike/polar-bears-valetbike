@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'home/main'
   get 'home/pricing'
   get 'home/about'
+  get 'home/payment'
   get 'stations/index'
   # get 'stations/show'
   # get 'stations/delete'
