@@ -14,19 +14,11 @@ Rails.application.routes.draw do
   # get 'stations/show'
   # get 'stations/delete'
 
-  resources :stations do
-    member do
-      get :delete
-    end
-  end
-  resources :bikes do
-    member do
-      get :delete
-    end
-  end
+  resources :stations, only:[:index, :show]
+  resources :bikes, only: [:index, :update, :show]
 
-  patch 'bikes/edit'
-  
+  patch 'bikes/update'
+
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
   get 'sign_in', to: 'sessions#new'
