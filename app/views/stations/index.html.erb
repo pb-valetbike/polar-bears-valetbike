@@ -5,23 +5,29 @@
     </div>
     <div class="map-container">
       <div id="map">
-        <%= javascript_include_tag 'map' %>
-
         <script>
+          var map = L.map('map').setView([42.3163031, -72.6424982], 13);
+                      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                      }).addTo(map)
           var popup = L.popup();
 
           function onMapClick(e) {
-              popup
-                  .setLatLng(e.latlng)
-                  .setContent("Hello")
-                  .openOn(map);
-          }
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
 
           <% if @stations.present? & @bikes.present? %>
             <% @stations.each_with_index do |item| %>
                 var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
+
             <% end %>
           <% end %>
+
+          map.on('click', onMapClick);
         </script>
       </div>
     <style media="screen">
@@ -29,6 +35,7 @@
     </style>
     <header class="main" id="siteheader">
       <a href="#menu" class="menu-link active"><span></span> <a href="#">Stations</a></a>
+    </header>
       <nav id="menu" class="menu">
         <ul class="level-1">
           <% if @stations.present? & @bikes.present? %>
@@ -43,6 +50,5 @@
           <% end %>
         </ul>
       </nav>
-    </header>
 	</div>
 </div>

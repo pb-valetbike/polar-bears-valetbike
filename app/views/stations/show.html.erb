@@ -6,7 +6,7 @@
   <p> Please click the bike you want to unlock </p>
   <% @bikes.each do |bike| %>
     <% if bike[:current_station_id] == @station.identifier %>
-      <li><%= link_to(bike[:identifier] , edit_bike_path(bike), class: 'action show') %>
+      <li><%= link_to(bike[:identifier] , bike_path(bike), class: 'action show') %>
     <% else %>
     <% end %>
   <% end  %>
