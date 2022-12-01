@@ -1,0 +1,20 @@
+
+<div>
+  <h1 class="font-bold text-4xl">You are on a ride!</h1>
+  <p>You are currently renting this bike: <%= @bike.identifier %></p>
+
+  <div>
+    <center>
+    <p> Select a station to return a bike: </p>
+
+  <div class="dropdown">
+  <%= form_with url:bike_path(@bike), method: :patch do |f| %>
+   <% #url: bike_path(@bike), method:'patch' %>
+    <%= f.select :stationId, Station.all.collect { |s| [s.name, s.identifier] }, include_blank: false %>
+    <br> <br>
+   <%= f.submit "Return Now" %>
+  <% end %>
+  </div>
+</center>
+</div>
+</div>

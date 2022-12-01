@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   # get 'stations/delete'
 
   resources :stations, only:[:index, :show]
-  resources :bikes, only: [:index, :update, :show]
+  resources :bikes, only: [:index, :update, :show, :edit]
 
-  patch 'bikes/update'
+  get '/unlock', to: 'bikes#update'
+  patch '/unlock', to: 'bikes#update'
+
 
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
