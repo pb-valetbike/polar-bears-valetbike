@@ -1,16 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">Bikes#show</h1>
-  <p>You are currently renting this bike: <%= @bike.identifier %></p>
+<p> You have successfully finished a ride! </p>
+<p> You have used this bike: <%= @bike.identifier %> </p>
+<p> You ended your ride:
 
-  <div>
-    <p> Select a station to return a bike: </p>
+<% @stations.each do |item| %>
+<% if @bike.current_station_id == item[:identifier] %>
+  <%= item[:name] %>
+<% end %>
+<% end %>
+</p>
+<p>
+  <center>
+To start another ride:
 
-  <div class="dropdown">
-  <%= form_with url: bikes_update_path, method: :patch do |f| %>
-    <%= f.select :stationId, Station.all.collect { |s| [s.name, s.name] }, include_blank: false %>
-    <br>
-  <%= f.submit "Return Now" %>
-  <% end %>
-  </div>
-
-</div>
+<%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %>
+</center>
+</p>

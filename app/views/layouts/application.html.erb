@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
      crossorigin=""/>
-     <!-- Make sure you put this AFTER Leaflet's CSS -->
      <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
       integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
       crossorigin=""></script>
@@ -27,6 +26,20 @@
         background: linear-gradient(powderblue, white);
         display:inline;
       }
+      .navbar-nav.navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translatex(-50%);
+        }
+        .navbar-nav > li{
+          padding-left:30px;
+          padding-right:30px;
+        }
+        .navbar {
+          min-height: 75px !important;
+          height: 75px !important;
+          max-height: 75px !important;
+        }
       .header-button {
         height: 45px;
         width: 90px;
@@ -53,10 +66,11 @@
         padding: 20px;
         font-weight: bold;
       }
+
     </style>
     <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
     <script src="toggle-nav.js"></script>
-    
+
   </head>
   <body>
     <div id="site-container" class="flexbox vertical stretch flex-1">
@@ -71,9 +85,9 @@
         <%end%>
         <%= image_tag("account.png", :size => "50x50")%>
       </header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light center">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto navbar-center">
             <li class="nav-item active">
               <a class="nav-link" href="/home/main">Home<span class="sr-only">(current)</span></a>
             </li>
