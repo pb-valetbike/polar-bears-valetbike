@@ -5,12 +5,13 @@
   <div>
     <p> Select a station to return a bike: </p>
 
-  <div class="dropdown">
-  <%= form_with url: bikes_update_path, method: :patch do |f| %>
-    <%= f.select :stationId, Station.all.collect { |s| [s.name, s.name] }, include_blank: false %>
-    <br>
-  <%= f.submit "Return Now" %>
-  <% end %>
+    <div class="dropdown">
+      <%= form_with url: bikes_update_path, method: :patch do |f| %>
+        <%= f.select :stationId, Station.all.collect { |s| [s.name, s.name] }, include_blank: false %>
+        <br>
+      <%= f.submit "Return Now" %>
+      <% end %>
+    </div>
   </div>
 
 </div>
