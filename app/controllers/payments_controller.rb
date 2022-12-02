@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
 
-    
+
   
   end
