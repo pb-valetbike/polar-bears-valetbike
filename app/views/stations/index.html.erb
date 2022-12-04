@@ -10,33 +10,22 @@
                       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         maxZoom: 19,
                         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                      }).addTo(map)
-          var popup = L.popup();
-
-          function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-}
-
-          <% if @stations.present? & @bikes.present? %>
-            <% @stations.each_with_index do |item| %>
+                      }).addTo(map);
+          <% if @stations.present? %>
+            <% @stations.each do |item| %>
                 var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
-
+                var message = "<b>" + "<%= item[:name] %>" + "</b><br> Address: <%= item[:address] %>";
+                marker.bindPopup(message).openPopup();
             <% end %>
           <% end %>
-
-          map.on('click', onMapClick);
         </script>
       </div>
     <style media="screen">
       #map { height: 500px; }
     </style>
-    <header class="main" id="siteheader">
-      <a href="#menu" class="menu-link active"><span></span> <a href="#">Stations</a></a>
-    </header>
-      <nav id="menu" class="menu">
+    </div>
+    <header class="main" id="siteheader"><center>
+      Select the station you want to start your ride from
         <ul class="level-1">
           <% if @stations.present? & @bikes.present? %>
             <% @stations.each do |item| %>
@@ -49,6 +38,6 @@
           </div>
           <% end %>
         </ul>
-      </nav>
-	</div>
+      </center></header>
+</div>
 </div>
