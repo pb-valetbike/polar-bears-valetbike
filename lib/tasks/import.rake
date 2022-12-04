@@ -9,6 +9,7 @@ require 'csv'
       s.address = row["address"]
       s.xcoord = row["xcoord"]
       s.ycoord = row["ycoord"]
+      s.dock_count = row["dock_count"]
       s.save
     end
   end

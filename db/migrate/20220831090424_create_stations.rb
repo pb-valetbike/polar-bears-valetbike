@@ -6,6 +6,7 @@ class CreateStations < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :xcoord
       t.string :ycoord
+      t.string :dock_count
 
       t.timestamps
     end

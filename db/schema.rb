@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_153106) do
     t.string "address"
     t.string "xcoord"
     t.string "ycoord"
+    t.string "dock_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

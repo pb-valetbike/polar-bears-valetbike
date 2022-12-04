@@ -14,8 +14,9 @@
           <% if @stations.present? %>
             <% @stations.each do |item| %>
                 var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
-                var message = "<b>" + "<%= item[:name] %>" + "</b><br> Address: <%= item[:address] %>";
-                marker.bindPopup(message).openPopup();
+                <%= count = item.dock_count.to_i - item.docked_bikes.count %>
+                var message = "<b>" + "<%= item.name %>" + "</b><br> Address: <%= item.address %>" + "<br> Total Dock Count: "+ "<b> <%= item.dock_count %> </b>" + "<br> Current Docked Bike Count: <b> <%=item.docked_bikes.count %> </b>" + "<br> Current Available Docks: <b> <%= count %> </b>";
+                marker.bindPopup(message);
             <% end %>
           <% end %>
         </script>
