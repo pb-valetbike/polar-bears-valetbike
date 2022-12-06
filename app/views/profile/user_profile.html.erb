@@ -1,5 +1,6 @@
 <% if Current.user %>
 Logged in as: <%= Current.user.email %><br>
 <%= link_to 'Edit Password', edit_password_path %>
-
+<%= link_to 'Edit email', edit_email_path %>
+<p>Membership status<p>
 <%end%>
