@@ -14,98 +14,35 @@
     font-size: 22px;
   }
 
-  .photo {
-    display: inline;
-
+  .image {
+    width: 1000px;
+    height: 660px;
+    margin-bottom: 20px;
+    background-image: url('https://cdn.pixabay.com/photo/2016/11/19/12/24/bicycle-1839005_960_720.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .overlay {
+    width: 1000px;
+    height: 660px;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: linear-gradient(269deg, #00FFFF00 0%, #191C22C2 76%);
   }
 </style>
 
 <h1>Welcome to ValetBike!</h1>
 
+<div
+  class="image"
+  alt="A person sits on a rocky ledge overlooking a valley.">
+  <div class="overlay"></div>
+  <h5 style="color:white; position:absolute; top: 50px; left: 50px; font-size: 30px;">The Notch is Your Oyster</h5>
+  <p style="color:white; position:absolute; top: 100px; left: 50px;">Explore all of the beautiful sights of Nipmuc Notch.</p>
+</div>
+
 <a class="nav-link" href="/stations/index">
   <button type="button" class="solid-blue-button"><p class="font-bold" style="padding:12px">Find a Bike</p></button>
 </a>
-
-<!-- <>div class="contents grid gap-4 grid-cols-3 grid-rows-1">
-  <%= image_tag("bike_forest_bridge.jpg", :size => "300x480", :class => "photo")  %>
-  <%= image_tag("city_bike_path.jpg", :size => "600x960", :class => "photo")%>
-  <%= image_tag("person_red_bike.jpg", :size => "300x480", :class => "photo")%>
-</div> -->
-
-<div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
-  <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-    <button
-      type="button"
-      data-bs-target="#carouselExampleCaptions"
-      data-bs-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#carouselExampleCaptions"
-      data-bs-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#carouselExampleCaptions"
-      data-bs-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-  <div class="carousel-inner relative w-full overflow-hidden">
-    <div class="carousel-item active relative float-left w-full">
-      <img
-        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
-        class="block w-full"
-        alt="A person sits on a rocky ledge overlooking a valley."
-      />
-      <div class="carousel-caption hidden md:block absolute text-center">
-        <h5 class="text-xl">The Notch is Your Oyster</h5>
-        <p>Explore all of the beautiful sights of Nipmuc Notch.</p>
-      </div>
-    </div>
-    <div class="carousel-item relative float-left w-full">
-      <img
-        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-        class="block w-full"
-        alt="..."
-      />
-      <div class="carousel-caption hidden md:block absolute text-center">
-        <h5 class="text-xl">Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item relative float-left w-full">
-      <img
-        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-        class="block w-full"
-        alt="..."
-      />
-      <div class="carousel-caption hidden md:block absolute text-center">
-        <h5 class="text-xl">Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button
-    class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-    type="button"
-    data-bs-target="#carouselExampleCaptions"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-    type="button"
-    data-bs-target="#carouselExampleCaptions"
-    data-bs-slide="next"
-  >
-    <span class="visually-hidden">Next</span>
-    <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-  </button>
-</div>
