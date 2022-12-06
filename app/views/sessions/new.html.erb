@@ -2,15 +2,15 @@
   <%= form_with url: sign_in_path do |f| %>
     <p>
     <%= f.label 'email:'%><br>
-    <%= f.text_field :email, id: 'email' %>
+    <%= f.text_field :email, id: 'email', :class => "input-field" %>
     </p>
     <p>
     <%= f.label 'password:'%><br>
-    <%= f.password_field :password, id: 'password' %><br>
+    <%= f.password_field :password, id: 'password', :class => "input-field" %><br>
     <%= link_to 'Forgot your password?', password_reset_path %>
     </p>
-    <p>
-    <%= f.submit 'Log In' %>
+    <p class="submit-button">
+    <%= f.submit 'Log In'%>
     </p>
   <% end %>
   

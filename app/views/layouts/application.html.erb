@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
      crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
       integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
       crossorigin=""></script>
 
@@ -24,35 +24,38 @@
       header{
         font-family: Lucida, Verdana, sans-serif;
         background: linear-gradient(powderblue, white);
-        display:inline;
       }
       .navbar-nav.navbar-center {
-            position: absolute;
-            left: 50%;
-            transform: translatex(-50%);
-        }
-        .navbar-nav > li{
-          padding-left:30px;
-          padding-right:30px;
-        }
-        .navbar {
-          min-height: 75px !important;
-          height: 75px !important;
-          max-height: 75px !important;
-        }
+        position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+      }
+      .navbar-nav > li{
+        padding-left:30px;
+        padding-right:30px;
+      }
+      .navbar {
+        min-height: 75px !important;
+        height: 75px !important;
+        max-height: 75px !important;
+      }
       .header-button {
-        height: 45px;
+        height: 50px;
         width: 90px;
         background-color: powderblue;
         background-size: 100% 100%;
         background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
         background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
-        border: 2px solid;
+        border: 1px solid;
         border-color: darkblue;
-        border-radius: 8px;
+        border-radius: 10px;
         margin: 3px;
-        float: right;
         color: darkblue;
+        text-align: center;
+      }
+      .avatar-image {
+        display: inline;
+        float: right;
       }
       footer {
         background: linear-gradient(to top, powderblue, white);
@@ -66,6 +69,24 @@
         padding: 20px;
         font-weight: bold;
       }
+      .input-field {
+        border-radius: 20px;
+      }
+      .submit-button {
+        height: 40px;
+        width: 90px;
+        background-color: powderblue;
+        background-size: 100% 100%;
+        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+        background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
+        border: 1px solid;
+        border-color: darkblue;
+        border-radius: 20px;
+        margin: 3px;
+        color: darkblue;
+        text-align: center;
+        justify: center;
+      }
 
     </style>
     <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
@@ -74,16 +95,19 @@
   </head>
   <body>
     <div id="site-container" class="flexbox vertical stretch flex-1">
-      <header>
+      <header class="flexbox horizontal stretch">
         <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
         <% if Current.user %>
-          <%= link_to 'Profile', profile_path, :class => "header-button" %>
-          <%= button_to 'Logout', logout_path, :class => "header-button", method: :delete %>
+          <div class="flexbox horizontal flex-end">
+            <%= link_to 'Profile', profile_path, :class => "header-button" %>
+            <%= button_to 'Logout', logout_path, :class => "header-button", method: :delete %>
+            <%= image_tag("account.png", :size => "50x50", :class => "avatar-image")%>
+          </div>
         <% else %>
           <%= link_to 'Sign Up', sign_up_path, :class => "header-button" %>
           <%= link_to 'Sign in', sign_in_path, :class => "header-button" %>
         <%end%>
-        <%= image_tag("account.png", :size => "50x50")%>
+        
       </header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light center">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
