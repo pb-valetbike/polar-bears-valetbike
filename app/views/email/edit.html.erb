@@ -1,0 +1,10 @@
+<h1>Edit Email</h1>
+<%= form_with model: Current.user, url: edit_email_path do |f| %>
+  <p>
+  <%= f.label 'email:'%><br>
+  <%= f.email_field :email %>
+  </p>
+  <p>
+  <%= f.submit 'Update' %>
+  </p>
+<% end %>
