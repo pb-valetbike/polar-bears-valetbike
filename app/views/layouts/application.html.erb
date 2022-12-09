@@ -23,7 +23,7 @@
     <style>
       header{
         font-family: Lucida, Verdana, sans-serif;
-        background: linear-gradient(powderblue, white);
+        background: linear-gradient(powderblue, #F8F9FF);
       }
       .navbar-nav.navbar-center {
         position: absolute;
@@ -90,7 +90,25 @@
       h1 {
         font-size: 55px;
         font-family: Lucida, Verdana, sans-serif;
-        
+        margin: 30px;
+        color: rgba(0, 0, 0, 0.596);
+        text-shadow: 3px 0px 5px rgb(0, 0, 0);
+      }
+      .page-container {
+        border-radius: 30px;
+        background-color: #DDDDDD;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 80px;
+        margin-right: 80px;
+        box-shadow: 5px 2px 43px 3px #98AFBB inset;
+        -webkit-box-shadow: 5px 2px 43px 3px #98AFBB inset;
+        -moz-box-shadow: 5px 2px 43px 3px #98AFBB inset;
+      }
+      .nav-tab {
+        box-shadow: -1px 25px 32px -17px rgba(117,117,117,0.68);
+        -webkit-box-shadow: -1px 25px 32px -17px rgba(117,117,117,0.68);
+        -moz-box-shadow: -1px 25px 32px -17px rgba(117,117,117,0.68);
       }
 
     </style>
@@ -99,46 +117,53 @@
 
   </head>
   <body>
-    <div id="site-container" class="flexbox vertical stretch flex-1">
-      <header class="flexbox horizontal stretch">
+    <div id="site-container" class="flexbox vertical stretch flex-1" style="background-color: #98AFBB;">
+
+      <header class="flexbox horizontal stretch justify-space-between">
         <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
-        <% if Current.user %>
-          <div class="flexbox horizontal flex-end">
-            <%= link_to 'Profile', profile_path, :class => "header-button" %>
-            <%= button_to 'Logout', logout_path, :class => "header-button", method: :delete %>
+        <div class="flexbox horizontal">
+          <% if Current.user %>
+            <%= link_to 'Profile', profile_path, :class => "flexbox center justify-space-around header-button" %>
+            <%= button_to 'Logout', logout_path, :class => "flexbox center justify-space-around header-button", method: :delete %>
             <%= image_tag("account.png", :size => "50x50", :class => "avatar-image")%>
-          </div>
-        <% else %>
-          <%= link_to 'Sign Up', sign_up_path, :class => "header-button" %>
-          <%= link_to 'Sign in', sign_in_path, :class => "header-button" %>
-        <%end%>
-        
+          <% else %>
+            <%= link_to 'Sign Up', sign_up_path, :class => "flexbox center justify-space-around header-button" %>
+            <%= link_to 'Sign in', sign_in_path, :class => "flexbox center justify-space-around header-button" %>
+          <%end%>
+        </div>
       </header>
+
+
       <nav class="navbar navbar-expand-lg navbar-light bg-light center">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto navbar-center">
-            <li class="nav-item active">
-              <a class="nav-link" href="/home/main">Home<span class="sr-only">(current)</span></a>
+            <li class="nav-item nav-tab">
+              <a class="nav-link" href="/home/main">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item nav-tab">
               <a class="nav-link" href="/home/about">About</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item nav-tab">
               <a class="nav-link" href="/stations/index">Station Map</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item nav-tab">
               <a class="nav-link" href="/home/pricing">Pricing</a>
             </li>
           </ul>
         </div>
       </nav>
-      <div class="flexbox vertical center">
+
+
+      <div class="flexbox vertical center page-container">
         <%= yield %>
       </div>
-      <footer>
-        <p class=footer-text style='float: left'>Contact us at ...</p>
-        <p class=footer-text style='float: right'>Share your experience</p>
+
+
+      <footer class="flexbox horizontal stretch justify-space-between">
+        <p class=footer-text>Contact us at ...</p>
+        <p class=footer-text>Share your experience</p>
       </footer>
+
     </div>
   </body>
 </html>

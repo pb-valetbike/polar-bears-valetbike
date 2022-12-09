@@ -27,7 +27,7 @@
 } %>
 
 <nav>
-    <ul style='display:inline-block; float:left;'>
+    <ul class="flexbox vertical justify-space-around">
         <li>
             <%= link_to("Instructions", {action: 'about', text: "instructions"}) %>
         </li>
@@ -42,26 +42,26 @@
         </li>
     </ul>
 </nav>
-<div style="display:inline-block;">
-<% if @text %>
-    <% if @text == "faq" %>
-        <% texts[@text].each do |line| %>
-            <% if line[-1] == "?" %>
-                <p class="font-bold"> <%= line %> </p>
-            <% else %>
+<div class="flexbox vertical stretch">
+    <% if @text %>
+        <% if @text == "faq" %>
+            <% texts[@text].each do |line| %>
+                <% if line[-1] == "?" %>
+                    <p class="font-bold"> <%= line %> </p>
+                <% else %>
+                    <p> <%= line %> </p>
+                <% end %>
+            <% end %>
+        <% else %>
+            <% texts[@text].each do |line|%>
                 <p> <%= line %> </p>
             <% end %>
         <% end %>
     <% else %>
-        <% texts[@text].each do |line|%>
+        <% texts["instructions"].each do |line|%>
             <p> <%= line %> </p>
         <% end %>
     <% end %>
-<% else %>
-    <% texts["instructions"].each do |line|%>
-        <p> <%= line %> </p>
-    <% end %>
-<% end %>
 </div>
 
 <%= image_tag("bike_forest_bridge.jpg", :size => "300x180", alt: "Biker going toward a wooden bridge in the woods.")%>
