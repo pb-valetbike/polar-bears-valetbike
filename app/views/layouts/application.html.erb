@@ -23,7 +23,7 @@
     <style>
       header{
         font-family: Lucida, Verdana, sans-serif;
-        background: linear-gradient(powderblue, white);
+        background: linear-gradient(#90c0c6, #F8F9FF);
       }
       .navbar-nav.navbar-center {
         position: absolute;
@@ -39,32 +39,23 @@
         height: 75px !important;
         max-height: 75px !important;
       }
-      .header-button {
-        height: 50px;
-        width: 90px;
-        background-color: powderblue;
-        background-size: 100% 100%;
-        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-        background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
-        border: 1px solid;
-        border-color: darkblue;
-        border-radius: 10px;
-        margin: 3px;
-        color: darkblue;
-        text-align: center;
-      }
       .avatar-image {
-        display: inline;
-        float: right;
+        margin-right: 10px;
+        border-radius: 25px;
+        border: 1px solid;
+        border-color: #4A676B;
+        box-shadow: 2px 3px 4px 0px #4A676BCC;
+        -webkit-box-shadow: 2px 3px 4px 0px #4A676BCC;
+        -moz-box-shadow: 2px 3px 4px 0px #4A676BCC;
       }
       footer {
-        background: linear-gradient(to top, powderblue, white);
+        background: linear-gradient(to top, #90c0c6, white);
         height: 85px;
         display: inline;
       }
       .footer-text {
         font-size: 30px;
-        color: darkblue;
+        color: #4A676B;
         font-family: Gabriola, Lucida, Verdana, sans-serif;
         padding: 20px;
         font-weight: bold;
@@ -72,26 +63,80 @@
       .input-field {
         border-radius: 20px;
       }
-      .submit-button {
-        height: 40px;
-        width: 90px;
-        background-color: powderblue;
-        background-size: 100% 100%;
-        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-        background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #669FBE45 80%);
-        border: 1px solid;
-        border-color: darkblue;
-        border-radius: 20px;
-        margin: 3px;
-        color: darkblue;
-        text-align: center;
-        justify: center;
-      }
       h1 {
         font-size: 55px;
         font-family: Lucida, Verdana, sans-serif;
-        
+        margin: 30px;
+        color: rgba(0, 0, 0, 0.596);
+        text-shadow: 2px 0px 3px #4A676B;
       }
+      .page-container {
+        border-radius: 30px;
+        background-color: #EEEEEE;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 80px;
+        margin-right: 80px;
+        box-shadow: 5px 2px 43px 3px #A2BCAF inset;
+        -webkit-box-shadow: 5px 2px 43px 3px #A2BCAF inset;
+        -moz-box-shadow: 5px 2px 43px 3px #A2BCAF inset;
+      }
+      .nav-tab {
+        box-shadow: 1px 26px 30px -19px rgba(0,0,0,1);
+        -webkit-box-shadow: 1px 26px 30px -19px rgba(0,0,0,1);
+        -moz-box-shadow: 1px 26px 30px -19px rgba(0,0,0,1);
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      .button {
+        background-color: #BEE9D3;
+        background-size: 100% 100%;
+        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+        background-image: radial-gradient(49% 81% at 49% 48%, #073AFF00 0%, #9EC9B345 80%);
+        color: #2A475B;
+        border: 1px solid;
+        border-color: #4A676B;
+        box-shadow: 2px 3px 4px 0px #4A676BCC;
+        -webkit-box-shadow: 2px 3px 4px 0px #4A676BCC;
+        -moz-box-shadow: 2px 3px 4px 0px #4A676BCC;
+      }
+      .button:hover {
+        color: #2A475B;
+        background-color: #CEF9E3;
+      }
+      .button.solid-blue {
+        height: 60px;
+        width: 150px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-family: Calisto;
+        font-size: 22px;
+      }
+      .button.price-op {
+        height: 70px;
+        width: 400px;
+        border-radius: 10px;
+        margin: 3px;
+      }
+      .button.header {
+        height: 50px;
+        width: 90px;
+        border-radius: 10px;
+        margin-right: 10px;
+        text-align: center;
+      }
+      .button.submit {
+        height: 40px;
+        width: 90px;
+        border-radius: 20px;
+        margin: 3px;
+        text-align: center;
+        justify: center;
+      }
+      .straight:hover {
+        text-decoration: none;
+      }
+
 
     </style>
     <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
@@ -99,46 +144,53 @@
 
   </head>
   <body>
-    <div id="site-container" class="flexbox vertical stretch flex-1">
-      <header class="flexbox horizontal stretch">
-        <a href='/home/main'><p style='color:black; display:inline; float: left; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
-        <% if Current.user %>
-          <div class="flexbox horizontal flex-end">
-            <%= link_to 'Profile', profile_path, :class => "header-button" %>
-            <%= button_to 'Logout', logout_path, :class => "header-button", method: :delete %>
-            <%= image_tag("account.png", :size => "50x50", :class => "avatar-image")%>
+    <div id="site-container" class="flexbox vertical stretch flex-1 justify-space-between" style="background-color: #61878C;">
+      <div class="flexbox vertical">
+        <header class="flexbox horizontal stretch justify-space-between">
+          <a class="straight" href='/home/main'><p style='margin-left: 10px; color:#4A676B; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
+          <div class="flexbox horizontal center">
+            <% if Current.user %>
+              <%= link_to 'Profile', profile_path, :class => "flexbox center justify-space-around button header straight" %>
+              <%= button_to 'Logout', logout_path, :class => "flexbox center justify-space-around button header", method: :delete %>
+              <%= image_tag("account.png", :size => "50x50", :class => "avatar-image")%>
+            <% else %>
+              <%= link_to 'Sign Up', sign_up_path, :class => "flexbox center justify-space-around button header straight" %>
+              <%= link_to 'Sign in', sign_in_path, :class => "flexbox center justify-space-around button header straight" %>
+            <%end%>
           </div>
-        <% else %>
-          <%= link_to 'Sign Up', sign_up_path, :class => "header-button" %>
-          <%= link_to 'Sign in', sign_in_path, :class => "header-button" %>
-        <%end%>
-        
-      </header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light center">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto navbar-center">
-            <li class="nav-item active">
-              <a class="nav-link" href="/home/main">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/home/about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/stations/index">Station Map</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/home/pricing">Pricing</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="flexbox vertical center">
+        </header>
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light center" style="border-bottom: 1px solid; border-color:#666666;">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto navbar-center">
+              <li class="nav-item nav-tab">
+                <a class="nav-link" href="/home/main">Home</a>
+              </li>
+              <li class="nav-item nav-tab">
+                <a class="nav-link" href="/home/about">About</a>
+              </li>
+              <li class="nav-item nav-tab">
+                <a class="nav-link" href="/stations/index">Station Map</a>
+              </li>
+              <li class="nav-item nav-tab">
+                <a class="nav-link" href="/home/pricing">Pricing</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+
+      <div class="flexbox vertical center page-container">
         <%= yield %>
       </div>
-      <footer>
-        <p class=footer-text style='float: left'>Contact us at ...</p>
-        <p class=footer-text style='float: right'>Share your experience</p>
+
+
+      <footer class="flexbox horizontal stretch justify-space-between" style="border: 1px solid; border-color: #666666;">
+        <p class=footer-text>Contact us at ...</p>
+        <p class=footer-text>Share your experience</p>
       </footer>
+
     </div>
   </body>
 </html>
