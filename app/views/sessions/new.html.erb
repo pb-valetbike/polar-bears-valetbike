@@ -2,14 +2,14 @@
   <%= form_with url: sign_in_path do |f| %>
     <p>
     <%= f.label 'email:'%><br>
-    <%= f.text_field :email, id: 'email' %>
+    <%= f.text_field :email, id: 'email', :class => "input-field" %>
     </p>
     <p>
     <%= f.label 'password:'%><br>
-    <%= f.password_field :password, id: 'password' %><br>
+    <%= f.password_field :password, id: 'password', :class => "input-field" %><br>
     </p>
-    <p>
-    <%= f.submit 'Log In' %>
+    <p class="flexbox vertical justify-space-around button submit">
+    <%= f.submit 'Log In'%>
     </p>
   <% end %>
   
