@@ -1,6 +1,6 @@
 require 'csv'
   desc "Import station data"
-  task import: :environment do
+  task stations: :environment do
     station = File.join Rails.root, "notes/station-data.csv"
     CSV.foreach(station, headers: true) do |row|
       s = Station.new
