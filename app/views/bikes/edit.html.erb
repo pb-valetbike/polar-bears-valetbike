@@ -5,15 +5,17 @@
   <div>
     <center>
 
-  <div class="dropdown">
-  <%= form_with url:bike_path(@bike), method: :patch do |f| %>
-   <% #url: bike_path(@bike), method:'patch' %>
-   <%= f.label "Select a station to return a bike: " %>
-    <%= f.select :stationId, Station.all.collect { |s| [s.name, s.identifier] }, include_blank: false %>
-    <br> <br>
-   <%= f.submit "Return Now" %>
-  <% end %>
+      <div class="dropdown">
+      <%= form_with url:bike_path(@bike), method: :patch do |f| %>
+      <% #url: bike_path(@bike), method:'patch' %>
+      <%= f.label "Select a station to return a bike: " %>
+        <%= f.select :stationId, Station.all.collect { |s| [s.name, s.identifier] }, include_blank: false %>
+        <br> <br>
+        <div class="flexbox justify-space-around button submit">
+          <%= f.submit "Return Now" %>
+        </div>
+      <% end %>
+      </div>
+    </center>
   </div>
-</center>
-</div>
 </div>

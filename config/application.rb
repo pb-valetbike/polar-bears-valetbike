@@ -3,7 +3,7 @@ require_relative "boot"
 require "rails/all"
 
 # config.load_defaults 6.0
-#config.autoload = :classic
+# config.autoload = :classic
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

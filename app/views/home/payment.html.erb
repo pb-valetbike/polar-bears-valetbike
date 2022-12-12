@@ -1,22 +1,4 @@
-<style>
-    .price-op-button {
-        height: 70px;
-        width: 400px;
-        background-color: white;
-        background-size: 100% 100%;
-        background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-        background-image: radial-gradient(49% 81% at 49% 48%, white 0%, #E2F8F8FF 90%);
-        border: 2px solid;
-        border-color: darkblue;
-        border-radius: 8px;
-        margin: 3px;
-        float: right;
-        color: darkblue;
-    }
-</style>
-
 <h1>Payment </h1>
-<br/>
 <br/>
 <p>On this page we will handle payment for renting a bike. As part of our minimum viable product,</p>
 <p>instead of handle genuine USD transactions, we plan to institute a points system. We will offer</p>
@@ -25,13 +7,11 @@
 <p>once we are able to link it with users, accounts, bikes and stations, as each payment must be</p>
 <p>linked to each of these objects.</p>
 <Ul>
-    <li style='display:table-row;'>
-        <h3 style='display:inline; margin:20px; text-align:right;'>Pay for ride</h3>
-        <a href="#">
-            <button class='price-op-button' style='display:inline'>
-                <h4 style='text-align:left'>Pay 10 points</h4>
-                <p style='text-align:left'>This will deduct 10 points from your account<p>
-            </button>
-        </a>
+    <li class="flexbox horizontal stretch center justify-space-around">
+        <h3 style="margin:20px;">Pay for ride</h3>
+        <div style="margin:20px;" class='flexbox vertical justify-space-between start button price-op straight'>
+            <h4 style='margin-left: 10px;' class="straight">Pay 10 points</h4>
+            <p style='margin-left:10px;' class="straight">This will deduct 10 points from your account<p>
+        </div>
     </li>
 </ul>
