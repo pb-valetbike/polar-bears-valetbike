@@ -25,13 +25,13 @@
       #map { height: 500px; }
     </style>
     </div>
-    <header class="main" id="siteheader"><center>
-      Select the station you want to start your ride from
+    <header class="main" id="siteheader">
+      <br><center>
+      <p> Select the station you want to start your ride from </p> <br>
         <ul class="level-1">
           <% if @stations.present? & @bikes.present? %>
             <% @stations.each do |item| %>
-              <%= link_to(item[:name] , station_path(item), class: 'action show') %>
-              <br>
+              <p> <%= link_to(item[:name] , station_path(item), class: 'action show') %>: Docked Bike Available: <%= item.docked_bikes.count %> </p> <br>
             <% end %>
           <% else %>
           <div class="empty">

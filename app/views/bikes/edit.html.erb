@@ -1,19 +1,17 @@
-
 <div>
   <h1 class="font-bold text-4xl">You are on a ride!</h1>
+
   <p>You are currently renting this bike: <%= @bike.identifier %></p>
   <div>
     <center>
-
+      <!-- The form takes the input of return station to add the bike to return station -->
       <div class="dropdown">
       <%= form_with url:bike_path(@bike), method: :patch do |f| %>
-      <% #url: bike_path(@bike), method:'patch' %>
-      <%= f.label "Select a station to return a bike: " %>
-        <%= f.select :stationId, Station.all.collect { |s| [s.name, s.identifier] }, include_blank: false %>
+       <% #url: bike_path(@bike), method:'patch' %>
+       <%= f.label "Select a station to return a bike: " %>
+        <%= f.select :stationId, Station.all.collect { |s| [s.name + ": available dock count = " + (s.dock_count.to_i - s.docked_bikes.count).to_s, s.identifier] }, include_blank: false %>
         <br> <br>
-        <div class="flexbox justify-space-around button submit">
-          <%= f.submit "Return Now" %>
-        </div>
+       <%= f.submit "Return Now" %>
       <% end %>
       </div>
     </center>

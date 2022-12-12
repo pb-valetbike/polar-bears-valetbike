@@ -1,5 +1,8 @@
 <p> You have successfully finished a ride! </p>
 <p> You have used this bike: <%= @bike.identifier %> </p>
+
+
+<p> You have started your ride from: <%= @ride.startStation %>
 <p> You ended your ride:
 
 <% @stations.each do |item| %>

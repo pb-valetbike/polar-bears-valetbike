@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bike_id: MyString
+  startStation: MyString
+  endStation: MyString
+  startTime: 2022-12-10 20:04:53
+  endTime: 2022-12-10 20:04:53
+
+two:
+  bike_id: MyString
+  startStation: MyString
+  endStation: MyString
+  startTime: 2022-12-10 20:04:53
+  endTime: 2022-12-10 20:04:53
