@@ -21,10 +21,10 @@
     ],
     "faq" => [
         "How do I unlock a bike?",
-        "Just go to our map page, select a station, and select a bike. If you haven't saved your card information with us, you will be prompted to do so.",
+        "Just go to our map page, select a station, and select a bike. If you don't currently have enough points, you will be prompted to buy more.",
         "\n",
         "Do I have to buy a membership?",
-        "No! You can unlock bikes as much as you please as long as you have an account and input your card information."
+        "No! You can unlock bikes as much as you please as long as you have an account and points available."
     ]
 } %>
 
@@ -66,11 +66,11 @@
                 <p> <%= line %> </p>
             <% end %>
         <% end %>
-        <div class="flexbox horizontal center justify-space-around" style="margin-top:80px;">
-            <div class="flexbox vertical justify-space-around button solid-blue">
-                <p class="flexbox vertical justify-space-around" style="margin:10px">Find a bike</p>
-            </div>
-        </div>
+        <center>
+            <a class="flexbox horizontal justify-space-around nav-link" style="margin:40px" href="/stations/index">
+                <button type="button" class="button solid-blue"><p class="font-bold" style="padding:12px">Find a Bike</p></button>
+            </a>
+        </center>
     </div>
 
     <div class="flexbox vertical" style="margin:40px; margin-right:80px;">

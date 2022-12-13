@@ -1,5 +1,4 @@
-<div>
-  <h1 class="font-bold text-4xl">You are on a ride!</h1>
+<h1>You are on a ride!</h1>
 <div class="flexbox vertical justify-space-around">
   <div class="flexbox justify-space-around">
     <p>You are currently renting bike  <span style="font-weight:bold"><%= @bike.identifier %></span></p>
@@ -7,20 +6,20 @@
   <div>
     <!-- The form takes the input of return station to add the bike to return station -->
     <div class="dropdown flexbox vertical justify-space-around" >
-    <%= form_with url:bike_path(@bike), method: :patch do |f| %>
-      <% #url: bike_path(@bike), method:'patch' %>
-      <div class="flexbox justify-space-around">
-        <%= f.label "Select a station to return a bike: " %>
-      </div>
-      <div class="flexbox justify-space-around">
-        <%= f.select :stationId, Station.all.collect { |s| [s.name + ": available dock count = " + (s.dock_count.to_i - s.docked_bikes.count).to_s, s.identifier] }, include_blank: false %>
-      </div>
-      <div class="flexbox horizontal center justify-space-around">
-        <div class="flexbox justify-space-around center button submit" style="width:120px; margin:30px">
-          <%= f.submit "Return Now" %>
+      <%= form_with url:bike_path(@bike), method: :patch do |f| %>
+        <% #url: bike_path(@bike), method:'patch' %>
+        <div class="flexbox justify-space-around">
+          <%= f.label "Select a station to return a bike: " %>
         </div>
-      </div>
-    <% end %>
+        <div class="flexbox justify-space-around">
+          <%= f.select :stationId, Station.all.collect { |s| [s.name + ": available dock count = " + (s.dock_count.to_i - s.docked_bikes.count).to_s, s.identifier] }, include_blank: false %>
+        </div>
+        <div class="flexbox horizontal center justify-space-around">
+          <div class="flexbox justify-space-around center button submit" style="width:120px; margin:30px">
+            <%= f.submit "Return Now" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
