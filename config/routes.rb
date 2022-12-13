@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :bikes, only: [:index, :update, :show, :edit]
   resources :payments, only: [:index]
 
+  get '/payments', to: 'registrations#profile'
+
+
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
   get 'sign_in', to: 'sessions#new'
