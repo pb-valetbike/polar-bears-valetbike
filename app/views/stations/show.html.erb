@@ -1,4 +1,5 @@
 <%= link_to("Back to Station Map", '/stations/index', class: 'back-link flexbox vertical justify-space-around button solid-blue', :style => "margin:40px;") %>
+<%# The user needs to stay loggedin to see the page with bike info %>
 <% if Current.user %>
     <p> You are currently viewing bikes at: </p>
     <p style="font-weight:bold"> <%= @station.name %> </p>
