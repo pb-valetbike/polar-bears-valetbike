@@ -1,17 +1,5 @@
-<h1>Payment </h1>
-<br/>
-<p>On this page we will handle payment for renting a bike. As part of our minimum viable product,</p>
-<p>instead of handle genuine USD transactions, we plan to institute a points system. We will offer</p>
-<p>each user 150 points, and "charge" them a certain number of points (e.g., 10 points) per ride,</p>
-<p>and another set number of points to "purchase" a membership. We will put this feature in place</p>
-<p>once we are able to link it with users, accounts, bikes and stations, as each payment must be</p>
-<p>linked to each of these objects.</p>
-<Ul>
-    <li class="flexbox horizontal stretch center justify-space-around">
-        <h3 style="margin:20px;">Pay for ride</h3>
-        <div style="margin:20px;" class='flexbox vertical justify-space-between start button price-op straight'>
-            <h4 style='margin-left: 10px;' class="straight">Pay 10 points</h4>
-            <p style='margin-left:10px;' class="straight">This will deduct 10 points from your account<p>
-        </div>
-    </li>
-</ul>
+<h1>Payment</h1>
+<!-- Payment Success Page -->
+<p> You have successfully bought 100 points. </p>
+<p> Want to start a ride? Back to station map: <%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %> </p>
+<p> Back to profile: <%= link_to("Back to Profile", '/profile', class: 'back-link') %> </p>

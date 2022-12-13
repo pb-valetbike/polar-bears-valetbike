@@ -5,6 +5,7 @@
 <% end %>
 <div class="flexbox horizontal wrap justify-space-around" style="margin:20px">
   <% @rides.each do |ride| %>
+    <% if ride.endStation %>
     <div class="flexbox vertical justify-space-around ride">
       <p class="ride-text">Ride started from: <span style="font-weight:bold"><%= ride.startStation %></span></p>
       <p class="ride-text">Ride ended at: <span style="font-weight:bold"><%= ride.endStation %></span></p>
@@ -12,5 +13,7 @@
       <p class="ride-text">Ride started at: <%= ride.startTime %></p>
       <p class="ride-text">Ride ended at: <%= ride.endTime %></p>
     </div>
+    <% else %>
+    <% end %>
   <%end%>
 </div>
