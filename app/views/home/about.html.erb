@@ -1,70 +1,82 @@
 <h1> About </h1>
 <% texts = Hash.new([
     "Using ValetBike is very simple!", 
-    "To start, just click over to the 'Stations' tab, or click the 'Find a Bike Now' button. This will bring you to our map page.",
-    "From there you can find nearby stations and unlock bikes within them."
+    "To start, just click over to the 'Station Map' tab, or click the 'Find a Bike Now' button. This will bring you to our map page.",
+    "From there you can select nearby stations and unlock bikes within them. Make sure you log in first to properly check out a bike.",
+    "When you want to return a bike, simply select the station you wish to return it to, and you're done!"
 ]) %>
 <% texts = {
     "instructions" => [
         "Using ValetBike is very simple!", 
-        "To start, just click over to the 'Stations' tab, or click the 'Find a Bike Now' button. This will bring you to our map page.",
-        "From there you can find nearby stations and unlock bikes within them."
+        "To start, just click over to the 'Station Map' tab, or click the 'Find a Bike Now' button. This will bring you to our map page.",
+        "From there you can select nearby stations and unlock bikes within them. Make sure you log in first to properly check out a bike.",
+        "When you want to return a bike, simply select the station you wish to return it to, and you're done!"
     ],
     "whatisvaletbike" => [
         "Valetbike is a bike share program designed to make local transportation within Nipmuc Notch simple and affordable."
     ],
     "whoarewe" => [
-        "We are a small dev team based in Northampton.",
+        "We are a small development team based in Northampton.",
         "We dream of seeing our customers use the bike share to better the environment and spend less money on the upkeep of a car."
     ],
     "faq" => [
         "How do I unlock a bike?",
-        "Just go to our map page and click 'unlock'. If you haven't saved your card information with us, you will be prompted to do so.",
+        "Just go to our map page, select a station, and select a bike. If you haven't saved your card information with us, you will be prompted to do so.",
         "\n",
         "Do I have to buy a membership?",
         "No! You can unlock bikes as much as you please as long as you have an account and input your card information."
     ]
 } %>
 
-<nav>
-    <ul class="flexbox vertical justify-space-around">
-        <li>
-            <%= link_to("Instructions", {action: 'about', text: "instructions"}) %>
-        </li>
-        <li>
-            <%= link_to("What is ValetBike?", {action: 'about', text: "whatisvaletbike"}) %>
-        </li>
-        <li>
-            <%= link_to("Who Are We?", {action: 'about', text: "whoarewe"}) %>
-        </li>
-        <li> 
-            <%= link_to("FAQ", {action: 'about', text: "faq"}) %>
-        </li>
-    </ul>
-</nav>
-<div class="flexbox vertical stretch">
-    <% if @text %>
-        <% if @text == "faq" %>
-            <% texts[@text].each do |line| %>
-                <% if line[-1] == "?" %>
-                    <p class="font-bold"> <%= line %> </p>
-                <% else %>
+<div class="flexbox horizontal stretch justify-space-around">
+    <nav class="flexbox vertical flex-0" >
+        <ul class="flexbox vertical justify-space-around flex-0" style="width:200px; margin:40px; margin-left:80px; border:solid 1px; border-color:#4A676B; border-radius:20px; background-color:#F8F9FF; box-shadow: 2px 3px 4px 0px #4A676BCC; -webkit-box-shadow: 2px 3px 4px 0px #4A676BCC; -moz-box-shadow: 2px 3px 4px 0px #4A676BCC;">
+            <li class="flexbox vertical justify-space-around about-tab">
+                <%= link_to("Instructions", {action: 'about', text: "instructions"}, :class => "straight nav-text") %>
+            </li>
+            <li class="flexbox vertical justify-space-around about-tab">
+                <%= link_to("What is ValetBike?", {action: 'about', text: "whatisvaletbike"}, :class => "straight nav-text") %>
+            </li>
+            <li class="flexbox vertical justify-space-around about-tab">
+                <%= link_to("Who Are We?", {action: 'about', text: "whoarewe"}, :class => "straight nav-text") %>
+            </li>
+            <li class="flexbox vertical justify-space-around about-tab" style="border-bottom: 0px"> 
+                <%= link_to("FAQ", {action: 'about', text: "faq"}, :class => "straight nav-text") %>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="flexbox vertical stretch" style="margin:40px; margin-left:0px;">
+        <% if @text %>
+            <% if @text == "faq" %>
+                <% texts[@text].each do |line| %>
+                    <% if line[-1] == "?" %>
+                        <p class="font-bold"> <%= line %> </p>
+                    <% else %>
+                        <p> <%= line %> </p>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <% texts[@text].each do |line|%>
                     <p> <%= line %> </p>
                 <% end %>
             <% end %>
         <% else %>
-            <% texts[@text].each do |line|%>
+            <% texts["instructions"].each do |line|%>
                 <p> <%= line %> </p>
             <% end %>
         <% end %>
-    <% else %>
-        <% texts["instructions"].each do |line|%>
-            <p> <%= line %> </p>
-        <% end %>
-    <% end %>
+        <div class="flexbox horizontal center justify-space-around" style="margin-top:80px;">
+            <div class="flexbox vertical justify-space-around button solid-blue">
+                <p class="flexbox vertical justify-space-around" style="margin:10px">Find a bike</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox vertical" style="margin:40px; margin-right:80px;">
+        <%= image_tag("bike_forest_bridge.jpg", :size => "300x180", alt: "Biker going toward a wooden bridge in the woods.", :class => "about-image", :style => "margin-right: 40px")%>
+        <%= image_tag("person_red_bike.jpg", :size => "300x180", alt: "Person standing in a city with a red bike.", :class => "about-image")%>
+        <%= image_tag("city_bike_path.jpg", :size => "300x180", alt: "Mother and daughter on an urban bike path.", :class => "about-image", :style => "margin-right: 80px")%>
+    </div>
+    
 </div>
-
-<%= image_tag("bike_forest_bridge.jpg", :size => "300x180", alt: "Biker going toward a wooden bridge in the woods.")%>
-<%= image_tag("person_red_bike.jpg", :size => "300x180", alt: "Person standing in a city with a red bike.")%>
-<%= image_tag("city_bike_path.jpg", :size => "300x180", alt: "Mother and daughter on an urban bike path.")%>
-
