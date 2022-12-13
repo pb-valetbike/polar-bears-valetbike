@@ -1,147 +1,45 @@
-# ValetBike
+# Polar-Bears-ValetBike
 
-Smith College CSC223: Software Engineering\
-Starter App for ValetBike project
+Smith College CSC223: Software Engineering
 
+Team members:
 Sulagna Saha
 Amanda Colby
 Janice Smith
-Nandini
+Nandini Chakravorty
 Liam Knight
 
-## Environment Configuration
+## Instructions for setting up the dev environment
+Run `bundle install` to install required gems.
+Create databases with `rake db:create`
+Migrate the database with `rake db:migrate`
+Populate the database (by importing data from CSV files) with `rake stations` and `rake bikes`
 
-As you configure your environment you should **keep a log** where you **write down all the steps you take** including **each command you type**. You will inevitably run into errors setting up your development environment and maintaining a meticulous log will allow others to help you troubleshoot. Ignore this recommendation at your own peril, but don't say you haven't been warned :]
+## MVP’s Functionality
 
-Installing Ruby on Rails is not a trivial process. It is the essential first step to developing ValetBike, and it will take you far longer than all the other steps to complete. Be sure to set aside ample time to work through the setup.
+The current MVP functionality consists of the following pages: Home, About, Station Map, Pricing, Sign Up and Log In.
+- Our home page provides the user the ability to click through any one of these pages and also includes a direct link to the station map (Find a Bike).
+- The About page allows users to navigate through “Instructions”, “What is ValetBike?”, “Who Are We?” and “FAQ”. These pages each contain information about instructions on how to use the bike, as well as information on ValetBike, the development team and common questions that users have.
+- The Station Map page provides an interactive map where the user can move their cursor around in the map.
+    - There are pinpoints on the locations of stations, when a pinpoint is clicked a small popup appears with the information of the location name, the address, the total dock count, the current docked bike count and the current available docks. Dock count and available bikes are dynamically updated based on the bike the user selects and the station the bike is returned to.
+    - Below the map, there is a list of linked stations that the user can click on. When a link is clicked, if the user is not logged in, they are prompted to log in.
+    - If a user is logged in, to start the ride from a station, the user must click on the station and a list of bike numbers appears. When a bike number is clicked the user unlocks a bike.
+    - The user is then directed to a new page and given a drop down menu of where they would like to return their bike.
+    - When the bike is returned, they have completed their ride and can return to the station map page. The user cannot return a bike to a station with no available docks.
+    - Once the ride is completed, the user can see all the information regarding the ride including the station where the bike was taken from, the bike number, and where the bike was returned. This information can also be accessed through ride history which is linked on the user profile.    
+- The Pricing page provides a pay per ride deal. When the user clicks on the “Pay per Ride” box, they are led to a page that describes how our payment plan and process works. Everyone starts with 100 points and whenever the user checks out a bike, 10 points are automatically deducted from their account. They can view the number of points they have in their profile page. They can also hit a button in their profile page to "purchase" 100 points, whenever they want. If they have 0 points, they cannot check out a new bike and in fact, they will not even see the list of stations below the station map. Instead they will see a message saying that they need to buy more points.
+- The Sign Up button navigates the user to a page where they can enter their email, password and password confirmation. Once the user signs up, the user is added to the database and are given more functionality according to their account.
+- The Sign in button navigates the user to a page where they can sign in to their account with their email and password. Once signed in the user is brought back to the home page. The “Sign Up” and “Sign In” buttons are now “Profile” and “Logout”, which logged in users can access. When “Profile” is clicked, users can edit their password, their email and check the status of their membership. The Logout button, logs the user out and they are immediately redirected to the home page.
 
-### 0. Remember that versions matter
+## Summary of changes since prototype
+Since the prototype, our group has changed the appearance of our page. We switched to a darker color scheme, while windows, buttons, and form-fields all have a more rounded, bubble-like appearance. We have also added more features to our Station Map, Sign In, Profile, Log Out and Pricing pages. For our station map, we have included pinpoints that when clicked on, provide a small pop up box of information about that current station location. We have also added the feature that unlocks the bike and returns it to a specific location. When a user signs into or logs out of their account, they are now redirected to our home page. For our Profile page, we added the option to edit the user's email address. For our pricing page, we have added a few features.
+Recommended Walkthrough
+The user can begin by clicking on the Sign Up button and creating an account in order to gain access to more of the website's features. After creating an account, the user is given the ability to edit password, edit their email or logout or sign back in. Once logged in, the user can click on the “About” page to gain insight  “Information”, “What is ValetBike?”, “Who Are We?” and “FAQ”, where the user can learn more about the bikes and our development team. Next, it is recommended that the user explore our payment system, by clicking on our “Pricing” page. Finally, it is recommended that the user go to our “Station Map” page, this can either be accessed through the “Find a Bike” link or our “Station Map” link on the home page. Once on this page, the user can click through the pinpoints on the map and move their cursor through locations to inquire information about each of the stations and their availability. Below the map, the user may click on a Station link and then a Bike number link in order to unlock a bike and ride. Once the user’s ride is completed, they can return their bike by indicating the station they are returning their bike to through a drop down menu and completing the return through the “Return Now” link. Now the user can log out through the “Logout” button or choose to continue exploring the page.
 
-ValetBike runs on Ruby 3.1.2 and Rails 7.0.3.1. It is essential that you configure your environment to use these precise versions of the language and framework.
 
-### 1. Install Ruby on Rails with MySQL
+## Link to live production deployment of application
+https://valetbikes.herokuapp.com/
 
-On Mac it is strongly recommended that you use asdf to install Ruby. On Windows you should set up your environment through the Windows Subsystem for Linux (WSL). The guides below explain how to do so in detail:
-
-- [Mac Ruby on Rails Developer Environment Setup](https://github.com/deadroxy/valetbike/blob/master/notes/mac-setup.md)
-- [Windows Ruby on Rails Developer Environment Setup](https://github.com/deadroxy/valetbike/blob/master/notes/windows-setup.md)
-
-Be sure to complete all the installation procedures in the relevant guide before continuing on to the next step.
-
-### 2. Fork & clone the ValetBike repo
-
-- Click fork in the upper right hand corner of the ValetBike GitHub page
-- This creates a copy of the repository on your personal GitHub account
-- To access this code on your development machine, create a local copy of your fork with:\
-  `git clone https://github.com/<your_username>/valetbike.git`
-- Note: you should run that command when you are in the folder where you want to store the repo\
-  (e.g. `/Users/<your_username>/Development`)
-
-### 3. Prepare the application
-
-- Enter the directory you just created: `cd valetbike`
-- Add `.tool-versions` to app directory to ensure the right ruby is always used: `asdf local ruby 3.1.2`
-- Install required gems with: `bundle install`
-
-### 4. Configure the database environment variables
-
-- Add a file called `.env` to the valetbike root directory
-- Ensure that it includes the credentials you setup when installing MySQL:
-
-```shell
-MYSQL_USERNAME=root
-MYSQL_PASSWORD=YOURPASSWORD
-MYSQL_SOCKET=/tmp/mysql.sock              # For Mac
-MYSQL_SOCKET=/var/run/mysqld/mysqld.sock  # For Windows
-```
-
-### 5. Prepare the database in MySQL
-
-- Use rails to create both the development and test databases with:\
-  `rake db:create`
-- Or use mysql to just create the development databse with:\
-  `mysql -u root -p`\
-  `CREATE DATABASE valetbike_development;`\
-  `exit`
-- Then run the database migrations with:\
-  `rake db:migrate`
-
-### 6. Confirm that the app runs
-
-- Launch the web server using `rackup` or `rails s` (short for `rails server`) or `bin/dev`
-- If using `rackup` open http://localhost:9292 (or http://127.0.0.1:9292) in a browser
-- If using `rails s` or `bin/dev` open http://localhost:3000 (or http://127.0.0.1:3000) in a browser
-- You should see ValetBike welcome page
-
-## Assignment #1: Hello Stack, Welcome to ValetBike!
-
-### Brief Background
-
-You and several other junior engineers have just started at ValetBike, a community tech co-op based in Nipmuc Notch, and you are excited to finally be getting paid to contribute to a meaningful app. During your hiring interview, you said you were comfortable doing full stack programming, but stressed you hadn't worked in Ruby on Rails before. The lead developer thought you were right for the position and promised you a guided tour of the codebase on your first day. However, after your onboarding, you learn they've just gone on leave indefinitely. It also turns out the lead developer was the _only_ developer at ValetBike, and now the rest of the team is counting on you and the other new programmers to complete the prototype before the scheduled launch day.
-
-As a fearless software engineer you agree to onboard yourself and attempt to continue the build. You didn't get much information about the architecture or design of the product during your interview. All you remember is that the lead developer had been working with the [ValleyBike](https://valleybike.org) team to iterate on their system which launched in 2018 and that they were using GitHub to collaborate on their codebase.
-
-### Assignment Goal
-
-Your primary objective is to get your development environment configured so that the existing app will run on your machine. To exceed expectations, you must add at least one feature to the current code. To distinguish yourself, you should add two or more features. See submission guidelines below for complete details.
-
-### How to Begin
-
-- Create a GitHub account if you don't have one
-- Go to [https://github.com/deadroxy/valetbike](https://github.com/deadroxy/valetbike)
-- Follow the README instructions to configure your environment
-
-### Teamwork Guidelines
-
-You may work in teams of up to five people to get your environments set up and to modify the code. But you must each submit your own unique environment screenshots via Moodle. If you choose to fork the repo to add features, you can collaborate on the code, but you must each create and submit a record of a unique pull request.
-
-### Ruby on Rails Guides
-
-You will probably be unfamiliar with the main components of the ValetBike stack like the language (Ruby), the framework (Rails), and the database (MySQL). Luckily the lead developer left links to their favorite books and tutorials for you below. Consult them regularly as you get your bearings in the new environment.
-
-- [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
-- [I Love Ruby](https://i-love-ruby.gitlab.io/)
-- [The Bastards Book of Ruby](http://ruby.bastardsbook.com/)
-- [Why's (Poignant) Guide to Ruby](https://poignant.guide/)
-
-### Exploration Tips
-
-- Review the files the lead developer left in the `notes/` folder
-- Pay special attention to the environment setup and [app creation](https://github.com/deadroxy/valetbike/blob/master/notes/app-creation.md) guides
-- Use GitHub to dive into previous commits to see what they built so far
-- Use `rails console` to experiment with creating station & bike records from the command line
-  - `s = Station.new(name: "Neu Station", address: "123 Novel Lane", identifier: "45")`
-  - `s.save`
-  - `b = Bike.new(identifier: "1234")`
-  - `b.current_station = s`
-  - `b.save`
-  - `s.docked_bikes`
-  - `s.docked_bikes.count`
-
-### Submission Guidelines to Meet Expectations
-
-1. Get ValetBike running on your development machine
-2. Modify the welcome message
-3. Take a screenshot showing your change works (include browser, console, date/time)
-4. Name the screenshot "youremail-a1-ss.png" or \*.jpg (for me it would be "jbrewer-a1-ss.png")
-5. Create a text file called "youremail-a1-team.txt" (for me it would be "jbrewer-a1-team.txt")
-6. List the names of everyone you worked with on this assignment, including your own (for me it would be "Johanna Brewer")
-7. Submit your screenshot and team list via Moodle
-
-### Submission Guidelines to Exceed Expectations or Distinguish yourself
-
-1. Complete all of the Meets Expectations tasks
-2. Implement one (Exceeds) or more (Distinguished) of the features below
-   - Show number of docked bikes at each station
-   - Create rake task to import station & bike data from csv files
-   - Allow user to view list of bikes
-   - Allow user to switch between station and bike list views
-   - Allow user to reverse sort order of stations or bikes in list view
-3. Commit and push your changes to your fork on GitHub
-4. Create a pull request from your modified fork to the main ValetBike repo
-5. Create a file called "youremail-a1-pr.txt" (for me it would be "jbrewer-a1-pr.txt")
-6. Include a complete link to your pull request as the first line of this file (e.g. "https://github.com/deadroxy/valetbike/pull/1234")
-7. Submit your pull request file along with your screenshot and team list via Moodle
 
 ## License
 
