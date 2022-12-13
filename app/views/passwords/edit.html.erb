@@ -9,7 +9,9 @@
   <%= f.label 'password_confirmation:'%><br>
   <%= f.password_field :password_confirmation, :class => "input-field" %>
   </p>
-  <p class="flexbox justify-space-around button submit">
-  <%= f.submit 'Update'%>
-  </p>
+  <div class="flexbox horizontal justify-space-around" style="margin-bottom:40px">
+    <p class="flexbox justify-space-around button submit">
+      <%= f.submit 'Update'%>
+    </p>
+  </div>
 <% end %>

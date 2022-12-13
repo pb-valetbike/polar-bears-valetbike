@@ -50,14 +50,14 @@
       footer {
         background: linear-gradient(to top, #90c0c6, white);
         height: 85px;
-        display: inline;
       }
       .footer-text {
         font-size: 30px;
-        color: #4A676B;
+        color: rgba(0, 0, 0, 0.596);
         font-family: Gabriola, Lucida, Verdana, sans-serif;
         padding: 20px;
         font-weight: bold;
+        text-shadow: 2px 0px 3px #4A676B;
       }
       .input-field {
         border-radius: 20px;
@@ -102,6 +102,7 @@
       .button:hover {
         color: #2A475B;
         background-color: #CEF9E3;
+        text-decoration: none;
       }
       .button.solid-blue {
         height: 60px;
@@ -110,6 +111,7 @@
         margin-bottom: 20px;
         font-family: Calisto;
         font-size: 22px;
+        text-align: center;
       }
       .button.price-op {
         height: 70px;
@@ -135,6 +137,25 @@
       .straight:hover {
         text-decoration: none;
       }
+      .about-tab{
+        height: 50px;
+        margin: 20px;
+        margin-bottom: 0px;
+        box-shadow: 28px 0px 30px -30px rgba(0,0,0,1);
+        -webkit-box-shadow: 28px 0px 30px -30px rgba(0,0,0,1);
+        -moz-box-shadow: 28px 0px 30px -30px rgba(0,0,0,1);
+        border-bottom: solid 1px;
+        border-color: rgba(0,0,0,.5);
+      }
+      .nav-text {
+        color: rgba(0,0,0,.5);
+      }
+      .nav-text:hover {
+        color:rgba(0,0,0,.7);
+      }
+      .about-image {
+        margin: 15px;
+      }
     </style>
 
   </head>
@@ -142,12 +163,14 @@
     <div id="site-container" class="flexbox vertical stretch flex-1 justify-space-between" style="background-color: #61878C;">
       <div class="flexbox vertical">
         <header class="flexbox horizontal stretch justify-space-between">
-          <a class="straight" href='/home/main'><p style='margin-left: 10px; color:#4A676B; padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
+          <a class="straight" href='/home/main'><p style='margin-left: 10px; color: rgba(0, 0, 0, 0.596); padding:10px; font-weight: bold; font-size: 20px'>ValetBike</p></a>
           <div class="flexbox horizontal center">
             <% if Current.user %>
-              <%= link_to 'Profile', profile_path, :class => "flexbox center justify-space-around button header straight" %>
               <%= button_to 'Logout', logout_path, :class => "flexbox center justify-space-around button header", method: :delete %>
-              <%= image_tag("account.png", :size => "50x50", :class => "avatar-image")%>
+              <%= link_to 'Profile', profile_path, :class => "flexbox center justify-space-around button header straight" %>
+              <a class="straight" href="/profile">
+                <%= image_tag("account.png", :size => "50x50", :class => "avatar-image")%>
+              </a>
             <% else %>
               <%= link_to 'Sign Up', sign_up_path, :class => "flexbox center justify-space-around button header straight" %>
               <%= link_to 'Sign in', sign_in_path, :class => "flexbox center justify-space-around button header straight" %>

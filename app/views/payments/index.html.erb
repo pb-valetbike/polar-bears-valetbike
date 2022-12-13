@@ -1,5 +1,18 @@
-<!-- Payment Success Page -->
 <h1>Payment</h1>
+
+<div id="smart-button-container" class="w-50">
+    <div style="text-align: center;">
+        <div>
+          <select id="item-options" style="visibility: hidden">
+            <option value="Pay Per Ride" price="2">Pay Per Ride - 2 USD</option>
+          </select>
+          <select style="visibility: hidden" id="quantitySelect"></select>
+        </div>
+        <div id="paypal-button-container"></div>
+    </div>
+</div>
+
+<!-- Payment Success Page -->
 <p> You have successfully bought 100 points. </p>
 <p> Want to start a ride? Back to station map: <%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %> </p>
 <p> Back to profile: <%= link_to("Back to Profile", '/profile', class: 'back-link') %> </p>

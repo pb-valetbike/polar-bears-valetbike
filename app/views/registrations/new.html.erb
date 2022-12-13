@@ -4,19 +4,21 @@
   align-items:center" class="flexbox vertical center justify-space-around">
     <%= form_with model: @user, url: sign_up_path do |f| %>
       <p>
-      <%= f.label 'email' %><br>
-      <%= f.text_field :email, :class => "input-field" %>
+        <%= f.label 'email' %><br>
+        <%= f.text_field :email, :class => "input-field" %>
       </p>
       <p>
-      <%= f.label 'password' %><br>
-      <%= f.password_field :password, :class => "input-field" %>
+        <%= f.label 'password' %><br>
+        <%= f.password_field :password, :class => "input-field" %>
       </p>
       <p>
-      <%= f.label 'password_confirmation' %><br>
-      <%= f.password_field :password_confirmation, :class => "input-field" %>
+        <%= f.label 'password_confirmation' %><br>
+        <%= f.password_field :password_confirmation, :class => "input-field" %>
       </p>
-      <p class="flexbox vertical justify-space-around button submit">
-      <%= f.submit 'Sign Up' %>
-      </p>
+      <div class="flexbox horizontal justify-space-around" style="margin-bottom:40px;">
+        <p class="flexbox vertical justify-space-around button submit">
+          <%= f.submit 'Sign Up' %>
+        </p>
+      </div>
     <% end %>
   </div>

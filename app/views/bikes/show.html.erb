@@ -1,20 +1,16 @@
-<p> You have successfully finished a ride! </p>
-<p> You have used this bike: <%= @bike.identifier %> </p>
+<h1>Ride Complete!</h1>
 
-
-<p> You have started your ride from: <%= @ride.startStation %>
-<p> You ended your ride:
-
-<% @stations.each do |item| %>
-<% if @bike.current_station_id == item[:identifier] %>
-  <%= item[:name] %>
-<% end %>
-<% end %>
+<p> You have successfully finished your ride from <%= @ride.startStation %> to 
+  <% @stations.each do |item| %>
+    <% if @bike.current_station_id == item[:identifier] %>
+      <%= item[:name] %>
+    <% end %>
+  <% end %>
 </p>
-<p>
-  <center>
-To start another ride:
 
-<%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %>
-</center>
-</p>
+<p> You have used bike: <span style="font-weight:bold;"><%= @bike.identifier %></span></p>
+<p>To start another ride:</p>
+
+<div class="flexbox justify-space-around button solid-blue" style="height:70px">
+  <%= link_to("Back to Station Map", '/stations/index', class: 'back-link flexbox justify-space-around straight', style: "color: #2A475B;") %>
+</div>

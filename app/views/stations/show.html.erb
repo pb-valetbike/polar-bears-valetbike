@@ -1,17 +1,18 @@
-<%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %>
+<%= link_to("Back to Station Map", '/stations/index', class: 'back-link flexbox vertical justify-space-around button solid-blue', :style => "margin:40px;") %>
 <%# The user needs to stay loggedin to see the page with bike info %>
 <% if Current.user %>
-    <p> You are currently viewing </p>
-    <p> <%= @station.name %> </p>
-    <div>
-      <p> Please click the bike you want to unlock </p>
+    <p> You are currently viewing bikes at: </p>
+    <p style="font-weight:bold"> <%= @station.name %> </p>
+    <div class="flexbox vertical center justify-space-around" style="margin-bottom:30px">
+      <p> Please select the bike you want to unlock </p>
       <% @bikes.each do |bike| %>
         <% if bike[:current_station_id] == @station.identifier %>
-          <li><%= link_to(bike[:identifier] , edit_bike_path(bike), class: 'action show') %>
+          <%= link_to(bike[:identifier] , edit_bike_path(bike), class: 'action show flexbox center justify-space-around button submit straight', :style => "margin-bottom:10px;") %>
         <% else %>
         <% end %>
       <% end  %>
     </div>
 <% else %>
   <p> Please log in first to unlock a bike </p>
+  <%= link_to 'Sign in', sign_in_path, :class => "flexbox center justify-space-around button solid-blue straight", :style => "margin:40px; margin-top:20px;" %>
 <% end %>
