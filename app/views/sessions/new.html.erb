@@ -1,15 +1,17 @@
 <h1>Sign In</h1>
-  <%= form_with url: sign_in_path do |f| %>
-    <p>
-    <%= f.label 'email:'%><br>
-    <%= f.text_field :email, id: 'email', :class => "input-field" %>
-    </p>
-    <p>
-    <%= f.label 'password:'%><br>
-    <%= f.password_field :password, id: 'password', :class => "input-field" %><br>
-    </p>
+<%= form_with url: sign_in_path do |f| %>
+  <p>
+  <%= f.label 'email:'%><br>
+  <%= f.text_field :email, id: 'email', :class => "input-field" %>
+  </p>
+  <p>
+  <%= f.label 'password:'%><br>
+  <%= f.password_field :password, id: 'password', :class => "input-field" %><br>
+  </p>
+  <div class="flexbox horizontal justify-space-around" style="margin-bottom:40px">
     <p class="flexbox vertical justify-space-around button submit">
-    <%= f.submit 'Log In'%>
+      <%= f.submit 'Log In'%>
     </p>
-  <% end %>
+  </div>
+<% end %>
   

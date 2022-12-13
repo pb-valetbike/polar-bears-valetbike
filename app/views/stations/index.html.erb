@@ -1,44 +1,40 @@
-<div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      <h1>Station Map</h1>
-    </div>
-    <div class="map-container">
-      <div id="map">
-        <script>
-          var map = L.map('map').setView([42.3163031, -72.6424982], 13);
-                      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                      }).addTo(map);
-          <% if @stations.present? %>
-            <% @stations.each do |item| %>
-                var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
-                <%= count = item.dock_count.to_i - item.docked_bikes.count %>
-                var message = "<b>" + "<%= item.name %>" + "</b><br> Address: <%= item.address %>" + "<br> Total Dock Count: "+ "<b> <%= item.dock_count %> </b>" + "<br> Current Docked Bike Count: <b> <%=item.docked_bikes.count %> </b>" + "<br> Current Available Docks: <b> <%= count %> </b>";
-                marker.bindPopup(message);
-            <% end %>
+<h1>Station Map</h1>
+<div class="section-inner flexbox vertical stretch">
+
+  <div class="map-container">
+    <div id="map">
+      <script>
+        var map = L.map('map').setView([42.3163031, -72.6424982], 13);
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                      maxZoom: 19,
+                      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(map);
+        <% if @stations.present? %>
+          <% @stations.each do |item| %>
+              var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
+              <%= count = item.dock_count.to_i - item.docked_bikes.count %>
+              var message = "<b>" + "<%= item.name %>" + "</b><br> Address: <%= item.address %>" + "<br> Total Dock Count: "+ "<b> <%= item.dock_count %> </b>" + "<br> Current Docked Bike Count: <b> <%=item.docked_bikes.count %> </b>" + "<br> Current Available Docks: <b> <%= count %> </b>";
+              marker.bindPopup(message);
           <% end %>
-        </script>
-      </div>
+        <% end %>
+      </script>
+    </div>
     <style media="screen">
       #map { height: 500px; }
     </style>
+  </div>
+
+  <div>
+    <h6> Select the station you want to start your ride from </h6> 
+    <% if @stations.present? & @bikes.present? %>
+      <% @stations.each do |item| %>
+        <p> <%= link_to(item[:name] , station_path(item), class: 'action show') %>: Docked Bike Available: <%= item.docked_bikes.count %> </p>
+      <% end %>
+    <% else %>
+    <div class="empty">
+      No stations found.
     </div>
-    <header class="main" id="siteheader">
-      <br><center>
-      <p> Select the station you want to start your ride from </p> <br>
-        <ul class="level-1">
-          <% if @stations.present? & @bikes.present? %>
-            <% @stations.each do |item| %>
-              <p> <%= link_to(item[:name] , station_path(item), class: 'action show') %>: Docked Bike Available: <%= item.docked_bikes.count %> </p> <br>
-            <% end %>
-          <% else %>
-          <div class="empty">
-            No stations found.
-          </div>
-          <% end %>
-        </ul>
-      </center></header>
-</div>
+    <% end %>
+  </div>
+
 </div>
