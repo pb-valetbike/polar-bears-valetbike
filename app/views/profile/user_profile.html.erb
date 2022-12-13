@@ -1,9 +1,20 @@
 <%# Profile Page %>
 <% if Current.user %>
-Logged in as: <%= Current.user.email %><br>
-<p> Available point: <%= Current.user.points %><br>
-<%= link_to 'Edit Password', edit_password_path %><br>
-<%= link_to 'Edit email', edit_email_path %><br>
-<%= link_to 'Ride History', 'rides/index' %><br>
-<%= link_to 'Buy points', payments_path %><br>
+    <h1>Profile</h1>
+    <p>Logged in as: <%= Current.user.email %></p>
+    <p>Available points: <span style="font-weight:bold"><%= Current.user.points %></span></p>
+    <div class="flexbox vertical stretch justify-space-between" style="margin-bottom:20px;">
+        <div class="flexbox vertical center justify-space-around">
+            <%= link_to 'Edit Password', edit_password_path, :class => "flexbox center justify-space-around button submit straight", :style => "width:150px; margin-bottom:10px;" %>
+        </div>
+        <div class="flexbox vertical center justify-space-around">
+            <%= link_to 'Edit Email', edit_email_path, :class => "flexbox center justify-space-around button submit straight", :style => "width:150px; margin-bottom:10px;" %>
+        </div>
+        <div class="flexbox vertical center justify-space-around">
+            <%= link_to 'Ride History', 'rides/index', :class => "flexbox center justify-space-around button submit straight", :style => "width:150px; margin-bottom:10px;" %>
+        </div>
+        <div class="flexbox vertical center justify-space-around">
+            <%= link_to 'Buy points', payments_path, :class => "flexbox center justify-space-around button submit straight", :style => "width:150px; margin-bottom:10px;" %>
+        </div>
+    </div>
 <%end%>
