@@ -9,7 +9,9 @@ class StationsController < ApplicationController
   def show
     @station = Station.find_by(id: params[:id])
     @bikes = Bike.all.order(identifier: :asc)
-    save_ride
+    if Current.user
+      save_ride
+    end
   end
 
   def save_ride
@@ -20,21 +22,6 @@ class StationsController < ApplicationController
       $count = @ride.id
       puts("saved")
     end
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def delete
-  end
-
-  def destroy
   end
 
 end

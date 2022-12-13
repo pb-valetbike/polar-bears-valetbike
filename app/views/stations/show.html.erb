@@ -1,4 +1,5 @@
 <%= link_to("Back to Station Map", '/stations/index', class: 'back-link') %>
+<%# The user needs to stay loggedin to see the page with bike info %>
 <% if Current.user %>
     <p> You are currently viewing </p>
     <p> <%= @station.name %> </p>

@@ -18,6 +18,12 @@ class BikesController < ApplicationController
     @stations = Station.all.order(identifier: :asc)
     @bike = Bike.find_by(id: params[:id])
     save_startTime
+    payment
+  end
+
+  def payment
+    user = Current.user
+    user.update_attribute(:points, user.points - 10)
   end
 
   def update
@@ -58,11 +64,5 @@ class BikesController < ApplicationController
     if @ride.update(startTime: Time.current)
       puts("startTime saved")
     end
-  end
-
-  def delete
-  end
-
-  def destroy
   end
 end

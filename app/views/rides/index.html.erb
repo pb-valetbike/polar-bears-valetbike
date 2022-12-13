@@ -1,15 +1,20 @@
 <div>
+  <!-- Shows the user's ride history -->
   <h1 class="font-bold text-4xl">Your Ride History</h1>
   <% if @rides.count < 1 %>
     <p> You currently don't have any ride! </p>
   <% end %>
   <% @rides.each do |ride| %>
-      <p>Ride started from: <%= ride.startStation %></p>
-      <p>Ride ended at: <%= ride.endStation %></p>
-      <p>Bike used in this ride: <%=ride.bikeid %></p>
-      <p>Ride started at: <%= ride.startTime %></p>
-      <p>Ride ended at: <%= ride.endTime %></p>
+  <ul>
+    <li style='display:table-row;'>
+        <p>Ride started from: <%= ride.startStation %></p>
+        <p>Ride ended at: <%= ride.endStation %></p>
+        <p>Bike used in this ride: <%=ride.bikeid %></p>
+        <p>Ride started at: <%= ride.startTime %></p>
+        <p>Ride ended at: <%= ride.endTime %></p>
+    </li>
       <br>
       <br>
+    </ul>
   <%end%>
 </div>

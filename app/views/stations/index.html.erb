@@ -1,44 +1,74 @@
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      <h1>Station Map</h1>
-    </div>
-    <div class="map-container">
-      <div id="map">
-        <script>
-          var map = L.map('map').setView([42.3163031, -72.6424982], 13);
-                      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                      }).addTo(map);
-          <% if @stations.present? %>
-            <% @stations.each do |item| %>
-                var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
-                <%= count = item.dock_count.to_i - item.docked_bikes.count %>
-                var message = "<b>" + "<%= item.name %>" + "</b><br> Address: <%= item.address %>" + "<br> Total Dock Count: "+ "<b> <%= item.dock_count %> </b>" + "<br> Current Docked Bike Count: <b> <%=item.docked_bikes.count %> </b>" + "<br> Current Available Docks: <b> <%= count %> </b>";
-                marker.bindPopup(message);
-            <% end %>
-          <% end %>
-        </script>
+  <!-- Main content -->
+    <div class="section-inner flexbox vertical stretch">
+      <div class="section-title">
+        <h1>Station Map</h1>
       </div>
-    <style media="screen">
-      #map { height: 500px; }
-    </style>
-    </div>
-    <header class="main" id="siteheader">
-      <br><center>
-      <p> Select the station you want to start your ride from </p> <br>
-        <ul class="level-1">
-          <% if @stations.present? & @bikes.present? %>
-            <% @stations.each do |item| %>
-              <p> <%= link_to(item[:name] , station_path(item), class: 'action show') %>: Docked Bike Available: <%= item.docked_bikes.count %> </p> <br>
+
+      <!-- This part of the code works with interactive map. Using script might not be a good idea for the long term.
+      We have tried using map.js by geojson and ajax but that somehow did not work. This is currently working fine. One error:
+      refreshing does not work sometimes, but clicking button that leads toward /station/index works fine -->
+
+      <!-- Next todo: include a search button on the map -->
+      <div class="map-container">
+        <div id="map">
+          <script>
+            <%# Initializes the map %>
+            var map = L.map('map').setView([42.3163031, -72.6424982], 13);
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                          maxZoom: 19,
+                          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        }).addTo(map);
+
+            <%# Works with every station and make every popup buttons work. The popup shows the current dynamic data. %>
+            <% if @stations.present? %>
+              <% @stations.each do |item| %>
+                  var marker = L.marker([<%= item[:xcoord] %>, <%= item[:ycoord] %>]).addTo(map);
+                  <%= count = item.dock_count.to_i - item.docked_bikes.count %>
+                  <%# The message inside the popup. You can include ruby code inside string as well %>
+                  <%# popup indludes the name, address, available bikes, dockes %>
+                  var message = "<b>" +
+                    "<%= item.name %>" +
+                    "</b><br> Address: <%= item.address %>" +
+                    "<br> Total Dock Count: "+
+                    "<b> <%= item.dock_count %> </b>" +
+                    "<br> Current Docked Bike Count: <b> <%=item.docked_bikes.count %> </b>" +
+                    "<br> Current Available Docks: <b> <%= count %> </b>";
+                  marker.bindPopup(message);
+              <% end %>
             <% end %>
+
+            map.addControl( new L.Control.Search({layer: searchLayer}) );
+          </script>
+        </div>
+        <!-- declaring the size of the map -->
+        <style media="screen">
+          #map { height: 500px; }
+        </style>
+      </div>
+
+      <!-- This part of the code shows us the stations and link to the station to unlock a bike. -->
+        <header class="main" id="siteheader">
+          <br>
+          <% if Current.user && Current.user.points < 1 %>
+            <p> You don't have enough available points to start a ride. Please buy more points to start a ride. </p>
           <% else %>
-          <div class="empty">
-            No stations found.
-          </div>
+            <center>
+            <p> Want to start a ride? Click on your start station with available bikes to choose your bike to unlock! </p> <br>
+              <ul class="level-1">
+                <!-- This ruby code creates the station list and lead to the station show page. The current available bikes are also shown in the page -->
+                <% if @stations.present? %>
+                  <% @stations.each do |item| %>
+                    <p> <%= link_to(item[:name] , station_path(item), class: 'action show') %>: Docked Bike Available: <%= item.docked_bikes.count %> </p> <br>
+                  <% end %>
+                <% else %>
+                <div class="empty">
+                  No stations found.
+                </div>
+                <% end %>
+              </ul>
+            </center>
           <% end %>
-        </ul>
-      </center></header>
-</div>
+        </header>
+      </div>
 </div>
